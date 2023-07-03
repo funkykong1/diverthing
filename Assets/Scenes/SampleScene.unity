@@ -102701,6 +102701,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3387973636542940011, guid: ddde9d04c35011e4594bd316501d89a4, type: 3}
+      propertyPath: slowdownDistance
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387973636542940011, guid: ddde9d04c35011e4594bd316501d89a4, type: 3}
+      propertyPath: endReachedDistance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387973636542940011, guid: ddde9d04c35011e4594bd316501d89a4, type: 3}
+      propertyPath: pickNextWaypointDist
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8348570910339307171, guid: ddde9d04c35011e4594bd316501d89a4, type: 3}
       propertyPath: m_Name
       value: Fish
@@ -102749,27 +102761,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6364587938468161056, guid: ddde9d04c35011e4594bd316501d89a4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddde9d04c35011e4594bd316501d89a4, type: 3}
---- !u!1 &8348570910929568217 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8348570910339307171, guid: ddde9d04c35011e4594bd316501d89a4, type: 3}
-  m_PrefabInstance: {fileID: 8348570910929568216}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &8348570910929568218
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8348570910929568217}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.005042729, y: -0.028574739}
-  m_Size: {x: 0.8487253, y: 0.44285423}
-  m_Direction: 1
