@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1438596637812923683}
   - component: {fileID: 5600402183325869068}
   - component: {fileID: 3387973636542940011}
+  - component: {fileID: 2394426082208480498}
   - component: {fileID: 8348570910339307173}
   - component: {fileID: 5143133387543207422}
   - component: {fileID: 1827854206}
@@ -105,7 +106,7 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   autoRepath:
     mode: 2
     interval: 0.5
@@ -119,9 +120,23 @@ MonoBehaviour:
   pickNextWaypointDist: 1
   endReachedDistance: 0.5
   alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
+  slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
   constrainInsideGraph: 0
+--- !u!114 &2394426082208480498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348570910339307171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  target: {fileID: 0}
 --- !u!212 &8348570910339307173
 SpriteRenderer:
   m_ObjectHideFlags: 0
