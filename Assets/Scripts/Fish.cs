@@ -27,7 +27,7 @@ public class Fish : MonoBehaviour
 
     void Start()
     {
-
+        rend.sprite = sprites[0];
     }
 
     void Update()
@@ -38,43 +38,39 @@ public class Fish : MonoBehaviour
         else if(aiPath.desiredVelocity.x <= -0.01f)
             transform.localScale = new Vector3(-1f, 1f, 1f);
 
-        if(chasing)
+        if(chaseTimer > 0)
             Chase();
+        else
+        {
+            aiPath.enabled = false;
+            rend.sprite = sprites[0];
+        }
+    }
+    void LateUpdate()
+    {
+        if(chaseTimer > 0)
+            chaseTimer -= 1 * Time.deltaTime;
     }
 
     void Chase()
     {
-        
-    }
-
-    IEnumerator StopChasing()
-    {
-        while(chasing)
-        {
-            yield return new WaitForSeconds(chaseTimer);
-            rend.sprite = sprites[0];
-            chasing = false;
-        }
+        aiPath.enabled = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
+        {
             ChaseRefresh();
             rend.sprite = sprites[1];
-    }
+        }
+    }   
 
     void ChaseRefresh()
     {
-        //refresh coroutine
-        if(chasing)
-            StopCoroutine(StopChasing());
-
         //will go at the player
         chasing = true;
         //if player re-enters the field of vision, resets timer
         chaseTimer = Random.Range(6f, 10f);
-
-        StartCoroutine(StopChasing());
     }
 }
