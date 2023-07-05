@@ -16,7 +16,7 @@ private RuleTile tile;
     }
     void Start()
     {
-        tile = GetComponent<RuleTile>();
+        
     }
     
 
