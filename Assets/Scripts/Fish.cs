@@ -12,8 +12,6 @@ public class Fish : MonoBehaviour
     public Sprite[] sprites;
 
     public float chaseTimer;
-    public bool chasing;
-
     void Awake()
     {
         //initialize stuff
@@ -68,8 +66,6 @@ public class Fish : MonoBehaviour
 
     void ChaseRefresh()
     {
-        //will go at the player
-        chasing = true;
         //if player re-enters the field of vision, resets timer
         chaseTimer = Random.Range(6f, 10f);
     }
