@@ -51,6 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f577e5276a6fef488e4cb33c110abab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: a141f4cf1cdb0ec4bb4bb47060bffa6b, type: 3}
+  - {fileID: 21300000, guid: 8d622f131e0fc6c43a968ba7834a2f95, type: 3}
   chaseTimer: 0
   chasing: 0
 --- !u!114 &5600402183325869068
@@ -110,19 +113,19 @@ MonoBehaviour:
   autoRepath:
     mode: 2
     interval: 0.5
-    sensitivity: 12.91
-    maximumInterval: 2
+    sensitivity: 9.97
+    maximumInterval: 0.5
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.8
-  pickNextWaypointDist: 1
+  pickNextWaypointDist: 0.5
   endReachedDistance: 0.5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
-  constrainInsideGraph: 1
+  constrainInsideGraph: 0
 --- !u!114 &2394426082208480498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +205,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00008749962, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
 --- !u!50 &1827854206
