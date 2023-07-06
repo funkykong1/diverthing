@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 
 public class Treasure : MonoBehaviour
 {
-
-private RuleTile tile;
 
     // Update is called once per frame
     void Update()
@@ -16,11 +13,11 @@ private RuleTile tile;
     }
     void Start()
     {
-        
+
     }
     
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
@@ -30,6 +27,7 @@ private RuleTile tile;
 
     public void PickMeUp()
     {
-        Debug.Log(tile.name);
+        Debug.Log("ok");
+        Destroy(gameObject);
     }
 }
