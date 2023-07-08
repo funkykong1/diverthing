@@ -30,7 +30,12 @@ public class Treasure : MonoBehaviour
     public void PickMeUp()
     {
         Debug.Log("Obtained " + treasureName + "!");
-        //pickup anim here
+        //UIManager.UpdateScore(scoreValue);
+        //AlienMaster.allAliens.Remove(gameObject);
+        //Instantiate(explosion, transform.position, Quaternion.identity);
+
+        //if(AlienMaster.allAliens.Count == 0)
+            //GameManager.SpawnNewWave();
         Destroy(gameObject);
     }
 }
