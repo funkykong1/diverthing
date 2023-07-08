@@ -34,8 +34,10 @@ public class Treasure : MonoBehaviour
         TreasureMaster.allItems.Remove(gameObject);
         //Instantiate(explosion, transform.position, Quaternion.identity);
 
-        if(TreasureMaster.allItems.Count == 0)
-            GameManager.SpawnTreasures();
+        //if(TreasureMaster.allItems.Count == 0)
+            //GameManager.StartEscape();
+
+            
         Destroy(gameObject);
     }
 }

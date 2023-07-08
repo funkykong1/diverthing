@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
-    public Image[] lifeSprites;
-
     private Color32 active = new Color(1,1,1,1);
     private Color32 inactive = new Color(1,1,1,0.25f);
     
-    public TextMeshProUGUI scoreText;
+    public Image[] lifeSprites;
+    public Sprite[] scoreSprites;
+    public Image scoreUI;
     public int score = 0;
     private static UIManager instance;
 
@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
     public static void UpdateScore (int s)
     {
         instance.score += s;
-        instance.scoreText.text = instance.score.ToString("000,000");
-    }
 
+        instance.scoreUI.sprite = instance.scoreSprites[instance.score];
+    }
 }
