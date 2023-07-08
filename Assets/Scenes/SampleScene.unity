@@ -103290,6 +103290,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1548284723299395745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5118393532011574698, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_Name
+      value: pickup anim
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.591
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273165304091295387, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
 --- !u!1001 &5193722799881112151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103415,6 +103472,62 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 361642172299575323, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: treasureName
+      value: exotic minerals
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176623560248305015, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: treasureName
+      value: exotic minerals
+      objectReference: {fileID: 0}
+    - target: {fileID: 2194291857201012840, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627754340266495975, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: treasureName
+      value: a plant specimen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4317683797036795492, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5079232479959615088, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: treasureName
+      value: a plant specimen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487663295330196961, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579540402530830760, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884594356051959443, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: treasureName
+      value: exotic minerals
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436052678237950884, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125278299708428319, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: treasureName
+      value: ancient pottery
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232111892492807354, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613992751914353307, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: treasureName
+      value: ancient pottery
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067833460275400369, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9114691943132458766, guid: f256deab4472603429f69f847d6def41, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -103466,6 +103579,10 @@ PrefabInstance:
     - target: {fileID: 9114691943132458767, guid: f256deab4472603429f69f847d6def41, type: 3}
       propertyPath: m_Name
       value: Treasure Parent Default
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114691943860342492, guid: f256deab4472603429f69f847d6def41, type: 3}
+      propertyPath: treasureName
+      value: exotic minerals
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f256deab4472603429f69f847d6def41, type: 3}

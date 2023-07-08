@@ -29,7 +29,7 @@ public class Treasure : MonoBehaviour
 
     public void PickMeUp()
     {
-        Debug.Log("Obtained " + treasureName + " !");
+        Debug.Log("Obtained " + treasureName + "!");
         //pickup anim here
         Destroy(gameObject);
     }
