@@ -7,7 +7,7 @@ public class Fish : MonoBehaviour
 {
     private AIPath aiPath;
     private CircleCollider2D circle;
-    private BoxCollider2D box;
+    private CapsuleCollider2D hitBox;
     private SpriteRenderer rend;
     public Sprite[] sprites;
 
@@ -17,7 +17,7 @@ public class Fish : MonoBehaviour
         //initialize stuff
         rend = GetComponent<SpriteRenderer>();
         circle = GetComponent<CircleCollider2D>();
-        box = GetComponent<BoxCollider2D>();
+        hitBox = GetComponent<CapsuleCollider2D>();
         aiPath = GetComponent<AIPath>();
     
         chaseTimer = 0;

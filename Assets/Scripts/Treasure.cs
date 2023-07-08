@@ -30,14 +30,14 @@ public class Treasure : MonoBehaviour
     public void PickMeUp()
     {
         Debug.Log("Obtained " + treasureName + "!");
-        UIManager.UpdateScore(1);
-        TreasureMaster.allItems.Remove(gameObject);
+        //UIManager.UpdateScore(1);
+        //TreasureMaster.allItems.Remove(gameObject);
         //Instantiate(explosion, transform.position, Quaternion.identity);
 
         //if(TreasureMaster.allItems.Count == 0)
             //GameManager.StartEscape();
 
-            
+
         Destroy(gameObject);
     }
 }
