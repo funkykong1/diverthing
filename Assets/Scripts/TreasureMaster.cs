@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class TreasureMaster : MonoBehaviour
 {
+
+    //thing is updated via Treasure.cs
     public static List<GameObject> allItems = new List<GameObject>();
 
 
 
-    // Start is called before the first frame update
     void Start()
     {
         foreach(GameObject go in GameObject.FindGameObjectsWithTag("Treasure"))

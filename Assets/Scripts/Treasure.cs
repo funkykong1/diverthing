@@ -30,12 +30,12 @@ public class Treasure : MonoBehaviour
     public void PickMeUp()
     {
         Debug.Log("Obtained " + treasureName + "!");
-        //UIManager.UpdateScore(scoreValue);
-        //AlienMaster.allAliens.Remove(gameObject);
+        UIManager.UpdateScore(1);
+        TreasureMaster.allItems.Remove(gameObject);
         //Instantiate(explosion, transform.position, Quaternion.identity);
 
-        //if(AlienMaster.allAliens.Count == 0)
-            //GameManager.SpawnNewWave();
+        if(TreasureMaster.allItems.Count == 0)
+            GameManager.SpawnTreasures();
         Destroy(gameObject);
     }
 }
