@@ -6,6 +6,8 @@ using UnityEngine;
 public class Treasure : MonoBehaviour
 {
 
+    public string treasureName;
+
     // Update is called once per frame
     void Update()
     {
@@ -27,7 +29,8 @@ public class Treasure : MonoBehaviour
 
     public void PickMeUp()
     {
-        Debug.Log("ok");
+        Debug.Log("Obtained " + treasureName + " !");
+        //pickup anim here
         Destroy(gameObject);
     }
 }
