@@ -11,6 +11,7 @@ public class Shrimp : MonoBehaviour
     private SpriteRenderer rend;
     public Sprite[] sprites;
 
+
     public float RunTimer;
     void Awake()
     {
@@ -19,13 +20,18 @@ public class Shrimp : MonoBehaviour
         circle = GetComponent<CircleCollider2D>();
         hitBox = GetComponent<CapsuleCollider2D>();
         aiPath = GetComponent<AIPath>();
+
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Point").Length; i++)
+        {
+            
+        }
     
         RunTimer = 0;
     }
 
     void Start()
     {
-        rend.sprite = sprites[0];
+        
     }
 
     void Update()
@@ -42,6 +48,7 @@ public class Shrimp : MonoBehaviour
         {
             //eventually change this to an idle thing
             aiPath.enabled = false;
+            
             rend.sprite = sprites[0];
         }
     }
@@ -54,6 +61,7 @@ public class Shrimp : MonoBehaviour
     void Run()
     {
         aiPath.enabled = true;
+        
     }
 
     void OnCollisionEnter2D(Collision2D other)
