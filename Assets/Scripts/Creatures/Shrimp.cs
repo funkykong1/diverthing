@@ -13,8 +13,7 @@ public class Shrimp : MonoBehaviour
     private SpriteRenderer rend;
     public Sprite[] sprites;
 
-    private GameObject targetPoint;
-    private GameObject[] points;
+    
 
 
 
@@ -34,7 +33,7 @@ public class Shrimp : MonoBehaviour
 
     void Start()
     {
-        points = GameObject.FindGameObjectsWithTag("Point");
+
     }
 
     void Update()
@@ -56,12 +55,7 @@ public class Shrimp : MonoBehaviour
             
             rend.sprite = sprites[0];
         }
-
-        if(aiPath.reachedEndOfPath)
-            RunTimer = 0;
-
-        if(targetPoint)
-        {}
+        
     }
     void LateUpdate()
     {
@@ -92,26 +86,21 @@ public class Shrimp : MonoBehaviour
     }   
 
     void RunRefresh()
-    {   
-        
-        targetPoint = points[Random.Range(0, points.Length)];
+    {
+        GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+        GameObject targetPoint = points[Random.Range(0, points.Length)];
 
         float dist = Vector2.Distance(targetPoint.transform.position, transform.position);
 
-        //only get new path once after plr comes close
         if(RunTimer <= 0)
         {
             setter.target = targetPoint.transform;
         }
 
-        
-
 
         //if player re-enters the field of vision, resets timer
         RunTimer = Random.Range(6f, 10f);
     }
-
-    
 
     void PickMeUp()
     {
