@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9114691943132458766, guid: f256deab4472603429f69f847d6def41, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.471659
+      value: 9.471659
       objectReference: {fileID: 0}
     - target: {fileID: 9114691943132458766, guid: f256deab4472603429f69f847d6def41, type: 3}
       propertyPath: m_LocalPosition.z
@@ -103441,34 +103441,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 943064787120741492, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 969946776431865253, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328606972399393782, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 1382276992256091447, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 1714810365560236416, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 2370661466323794971, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 4187981841769249211, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
     - target: {fileID: 4487040008685839371, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -103516,54 +103488,6 @@ PrefabInstance:
     - target: {fileID: 4751467881408221706, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
       propertyPath: m_Name
       value: Point Parent
-      objectReference: {fileID: 0}
-    - target: {fileID: 5412492407801938989, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 5419770714480330847, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239323036120696438, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 6555744359193815991, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 6909780471345629987, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 7170166321498391409, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417473311675781923, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744462083998940036, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 7865371380901041898, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 8005423366679037458, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427509548253355221, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747383171833715479, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}
-      propertyPath: m_TagString
-      value: Point
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 519e6efe29910dc4fa237d95e604fdc3, type: 3}

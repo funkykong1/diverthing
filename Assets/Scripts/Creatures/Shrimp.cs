@@ -6,32 +6,34 @@ using Pathfinding;
 public class Shrimp : MonoBehaviour
 {
     private AIPath aiPath;
+    private AIDestinationSetter setter;
+
     private CircleCollider2D circle;
     private CapsuleCollider2D hitBox;
     private SpriteRenderer rend;
     public Sprite[] sprites;
 
+    private GameObject targetPoint;
+
+
 
     public float RunTimer;
     void Awake()
     {
+
         //initialize stuff
         rend = GetComponent<SpriteRenderer>();
         circle = GetComponent<CircleCollider2D>();
         hitBox = GetComponent<CapsuleCollider2D>();
         aiPath = GetComponent<AIPath>();
+        setter = GetComponent<AIDestinationSetter>();
 
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Point").Length; i++)
-        {
-            
-        }
-    
         RunTimer = 0;
     }
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -43,7 +45,9 @@ public class Shrimp : MonoBehaviour
             transform.localScale = new Vector3(-1f, 1f, 1f);
 
         if(RunTimer > 0)
+        {
             Run();
+        }
         else
         {
             //eventually change this to an idle thing
@@ -51,6 +55,12 @@ public class Shrimp : MonoBehaviour
             
             rend.sprite = sprites[0];
         }
+
+        if(aiPath.reachedEndOfPath)
+            RunTimer = 0;
+
+        if(targetPoint)
+        {}
     }
     void LateUpdate()
     {
@@ -61,7 +71,6 @@ public class Shrimp : MonoBehaviour
     void Run()
     {
         aiPath.enabled = true;
-        
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -82,9 +91,23 @@ public class Shrimp : MonoBehaviour
     }   
 
     void RunRefresh()
-    {
+    {   
+        
+        GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+        GameObject targetPoint = points[Random.Range(0, points.Length)];
+
+        float dist = Vector2.Distance(targetPoint.transform.position, transform.position);
+
+
+        //only get new path once after plr comes close
+        if(RunTimer <= 0)
+        {
+            setter.target = targetPoint.transform;
+        }
+
+
         //if player re-enters the field of vision, resets timer
-        RunTimer = Random.Range(10f, 18f);
+        RunTimer = Random.Range(6f, 10f);
     }
 
     void PickMeUp()
@@ -101,3 +124,4 @@ public class Shrimp : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
