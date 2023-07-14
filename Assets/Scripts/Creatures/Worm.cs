@@ -5,9 +5,6 @@ using UnityEngine;
 public class Worm : MonoBehaviour
 {
 
-private WormSegment segment;
-
-
 void Awake()
 {
     
