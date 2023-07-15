@@ -10,6 +10,7 @@ public class WormSegment : MonoBehaviour
     void Start()
     {
         box = GetComponent<BoxCollider2D>();
+        worm = GetComponentInParent<Worm>();
     }
 
     // Update is called once per frame
