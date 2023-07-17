@@ -107,7 +107,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &8529939807711762757
 HingeJoint2D:
@@ -285,7 +285,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &1217314921865517450
 HingeJoint2D:
@@ -463,7 +463,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &1217314920669116713
 HingeJoint2D:
@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 1217314921063481450}
   - component: {fileID: 1467114645220087692}
   - component: {fileID: 1217314921063481451}
+  - component: {fileID: 1467114646390332371}
   m_Layer: 0
   m_Name: Snake 1
   m_TagString: Untagged
@@ -590,8 +591,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cd27b8699a8d548989592cf9bc93b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: []
+  sprites:
+  - {fileID: -990138281, guid: 4c66ee11ee97cab43babee265f22abd2, type: 3}
+  - {fileID: 1485997283, guid: 4c66ee11ee97cab43babee265f22abd2, type: 3}
   player: {fileID: 0}
+  knockback: 2
   chaseTimer: 0
 --- !u!212 &1467114645220087692
 SpriteRenderer:
@@ -664,8 +668,34 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!61 &1467114646390332371
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467114645220087690}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.030780554, y: 0.29627132}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.67460775, y: 1.5925426}
+  m_EdgeRadius: 0
 --- !u!1 &1467114645636001330
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +803,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &1217314922322686300
 HingeJoint2D:
@@ -951,7 +981,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &1217314922667737088
 HingeJoint2D:
@@ -1129,7 +1159,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &8285272799157869031
 HingeJoint2D:
@@ -1307,7 +1337,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &5520184650857241732
 HingeJoint2D:
@@ -1485,7 +1515,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &1217314920686034645
 HingeJoint2D:
@@ -1663,7 +1693,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &2211624160865829965
 HingeJoint2D:
@@ -1841,7 +1871,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &9117879655007568747
 HingeJoint2D:

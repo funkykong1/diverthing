@@ -8,6 +8,7 @@ public class Worm : MonoBehaviour
     private SpriteRenderer rend;
     public Sprite[] sprites;
     public Transform player;
+    public float knockback;
 
 
     public float chaseTimer;
@@ -52,11 +53,23 @@ public class Worm : MonoBehaviour
         {
             //damage
         }
-    }   
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.name == "Player")
+        {
+            Vector2 dir = new Vector2(other.transform.position.x - this.transform.position.x,other.transform.position.y - this.transform.position.y );
+            other.rigidbody.AddForce(dir * knockback, ForceMode2D.Impulse);
+
+            //deal damage too herer
+        }
+    }
+
 
     public void ChaseRefresh()
     {
         //if player re-enters the field of vision, resets timer
-        chaseTimer = Random.Range(6f, 10f);
+        chaseTimer = Random.Range(15f, 20f);
     }
 }
