@@ -6,6 +6,9 @@ public class Worm : MonoBehaviour
 {
     private CapsuleCollider2D hitBox;
     private SpriteRenderer rend;
+    private CircleCollider2D circle;
+    private Rigidbody2D rb;
+
     public Sprite[] sprites;
     public Transform player;
     public float knockback;
@@ -17,6 +20,10 @@ public class Worm : MonoBehaviour
         //initialize stuff
         rend = GetComponent<SpriteRenderer>();
         hitBox = GetComponent<CapsuleCollider2D>();
+        circle = GetComponent<CircleCollider2D>();
+        rb = GetComponent<Rigidbody2D>();   
+        Physics2D.IgnoreLayerCollision(6, 8, true);
+        
     
         chaseTimer = 0;
     }
@@ -44,15 +51,17 @@ public class Worm : MonoBehaviour
 
     void Chase()
     {
+        rend.sprite = sprites[1];
         transform.LookAt(player, Vector2.up);
+    }
+    public void Bite()
+    {
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
-        {
-            //damage
-        }
+
     }
 
     void OnCollisionEnter2D(Collision2D other)
