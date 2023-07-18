@@ -67,6 +67,6 @@ public class Fish : MonoBehaviour
     void ChaseRefresh()
     {
         //if player re-enters the field of vision, resets timer
-        chaseTimer = Random.Range(6f, 10f);
+        chaseTimer = Random.Range(10f, 18f);
     }
 }

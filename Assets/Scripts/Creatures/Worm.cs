@@ -23,7 +23,7 @@ public class Worm : MonoBehaviour
         circle = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();   
         Physics2D.IgnoreLayerCollision(6, 8, true);
-        
+        Physics2D.IgnoreLayerCollision(7, 8, true);
     
         chaseTimer = 0;
     }

@@ -7,6 +7,8 @@ public class Treasure : MonoBehaviour
 {
 
     public string treasureName;
+    public GameObject pickup;
+    public Transform pickupspot;
 
     // Update is called once per frame
     void Update()
@@ -15,7 +17,7 @@ public class Treasure : MonoBehaviour
     }
     void Start()
     {
-
+        
     }
     
 
@@ -32,7 +34,7 @@ public class Treasure : MonoBehaviour
         Debug.Log("Obtained " + treasureName + "!");
         //UIManager.UpdateScore(1);
         //TreasureMaster.allItems.Remove(gameObject);
-        //Instantiate(explosion, transform.position, Quaternion.identity);
+        Instantiate(pickup, pickupspot.position, Quaternion.identity);
 
         //if(TreasureMaster.allItems.Count == 0)
             //GameManager.StartEscape();

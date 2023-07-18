@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7148890778422131181}
   - component: {fileID: 5079232479959615088}
   - component: {fileID: 6905616868535194162}
-  - component: {fileID: 9067833460275400369}
+  - component: {fileID: 1669272143}
   m_Layer: 0
   m_Name: Plant 2
   m_TagString: Treasure
@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 3.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2814385123944919071}
   m_Father: {fileID: 9114691943132458766}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureName: a plant specimen
+  pickup: {fileID: 5118393532011574698, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+  pickupspot: {fileID: 2814385123944919071}
 --- !u!212 &6905616868535194162
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,7 +102,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &9067833460275400369
+--- !u!60 &1669272143
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +118,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -124,13 +127,44 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.375, y: 0}
-      - {x: -0.375, y: -0.40625}
-      - {x: -0.28125, y: -0.5}
-      - {x: 0.03125, y: -0.5}
-      - {x: 0.09375, y: -0.46875}
-      - {x: 0.09375, y: -0.21875}
-      - {x: 0.0625, y: 0}
+    - - {x: -0.375, y: 0.5}
+      - {x: -0.375, y: 0.09375}
+      - {x: -0.28125, y: 0}
+      - {x: 0.03125, y: 0}
+      - {x: 0.09375, y: 0.03125}
+      - {x: 0.09375, y: 0.28125}
+      - {x: 0.0625, y: 0.5}
+--- !u!1 &407649267314512867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2814385123944919071}
+  m_Layer: 0
+  m_Name: Pickup Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2814385123944919071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407649267314512867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.131, y: 0.208, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7148890778422131181}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1892447598035963450
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +182,7 @@ GameObject:
   - component: {fileID: 3386516171508434279}
   - component: {fileID: 1892447597550590275}
   - component: {fileID: 7610878941034991591}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shrimp
   m_TagString: Treasure
   m_Icon: {fileID: 0}
@@ -163,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892447598035963450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 0, z: 0}
+  m_LocalPosition: {x: -4.5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -366,8 +400,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 0.01
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -386,7 +420,7 @@ GameObject:
   - component: {fileID: 1837341077435262273}
   - component: {fileID: 7125278299708428319}
   - component: {fileID: 6822642103704959841}
-  - component: {fileID: 2194291857201012840}
+  - component: {fileID: 531754340}
   m_Layer: 0
   m_Name: Pot 2
   m_TagString: Treasure
@@ -405,7 +439,8 @@ Transform:
   m_LocalPosition: {x: 1.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7044147564967164165}
   m_Father: {fileID: 9114691943132458766}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -422,6 +457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureName: ancient pottery
+  pickup: {fileID: 5118393532011574698, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+  pickupspot: {fileID: 7044147564967164165}
 --- !u!212 &6822642103704959841
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -474,7 +511,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &2194291857201012840
+--- !u!60 &531754340
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -490,7 +527,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -499,12 +536,198 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.1875, y: -0.1875}
-      - {x: -0.34375, y: -0.28125}
-      - {x: -0.34375, y: -0.5}
-      - {x: 0.21875, y: -0.5}
-      - {x: 0.21875, y: -0.21875}
-      - {x: 0.125, y: -0.1875}
+    - - {x: -0.1875, y: 0.3125}
+      - {x: -0.34375, y: 0.21875}
+      - {x: -0.34375, y: 0}
+      - {x: 0.21875, y: 0}
+      - {x: 0.21875, y: 0.28125}
+      - {x: 0.125, y: 0.3125}
+--- !u!1 &2448999645707073674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6474519934603287384}
+  m_Layer: 0
+  m_Name: Pickup Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6474519934603287384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448999645707073674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.006, y: 0.216, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9114691943860342488}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3495023830829369694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8115764474983131226}
+  m_Layer: 0
+  m_Name: Pickup Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8115764474983131226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495023830829369694}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.212, y: 0.231, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 337149411524772840}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4295349568963501506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3687320448456179160}
+  m_Layer: 0
+  m_Name: Pickup Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3687320448456179160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4295349568963501506}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.198, y: 0.162, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1640378635644556797}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4765154617644915971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5456217551430310305}
+  m_Layer: 0
+  m_Name: Pickup Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5456217551430310305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765154617644915971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.027, y: 0.188, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7810574727050510381}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5390604165413895867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7044147564967164165}
+  m_Layer: 0
+  m_Name: Pickup Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7044147564967164165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390604165413895867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.05, y: 0.206, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1837341077435262273}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5426555873709592320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4601368750913197210}
+  m_Layer: 0
+  m_Name: Pickup Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4601368750913197210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426555873709592320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.108, y: 0.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4268652837071583810}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5559036744001905196
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +739,7 @@ GameObject:
   - component: {fileID: 4268652837071583810}
   - component: {fileID: 8613992751914353307}
   - component: {fileID: 729610187032476917}
-  - component: {fileID: 6436052678237950884}
+  - component: {fileID: 1065669142}
   m_Layer: 0
   m_Name: Pot 1
   m_TagString: Treasure
@@ -535,7 +758,8 @@ Transform:
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4601368750913197210}
   m_Father: {fileID: 9114691943132458766}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -552,6 +776,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureName: ancient pottery
+  pickup: {fileID: 5118393532011574698, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+  pickupspot: {fileID: 4601368750913197210}
 --- !u!212 &729610187032476917
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -604,7 +830,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &6436052678237950884
+--- !u!60 &1065669142
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -620,7 +846,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -629,13 +855,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.15625, y: -0.09375}
-      - {x: -0.25, y: -0.125}
-      - {x: -0.375, y: -0.40625}
-      - {x: -0.34375, y: -0.5}
-      - {x: 0.125, y: -0.5}
-      - {x: 0.125, y: -0.15625}
-      - {x: -0.03125, y: -0.09375}
+    - - {x: -0.15625, y: 0.40625}
+      - {x: -0.25, y: 0.375}
+      - {x: -0.375, y: 0.09375}
+      - {x: -0.34375, y: 0}
+      - {x: 0.125, y: 0}
+      - {x: 0.125, y: 0.34375}
+      - {x: -0.03125, y: 0.40625}
 --- !u!1 &5827099001194087650
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +873,7 @@ GameObject:
   - component: {fileID: 1640378635644556797}
   - component: {fileID: 3627754340266495975}
   - component: {fileID: 531832774889921083}
-  - component: {fileID: 4317683797036795492}
+  - component: {fileID: 1220220345}
   m_Layer: 0
   m_Name: Plant 1
   m_TagString: Treasure
@@ -666,7 +892,8 @@ Transform:
   m_LocalPosition: {x: 2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3687320448456179160}
   m_Father: {fileID: 9114691943132458766}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -683,6 +910,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureName: a plant specimen
+  pickup: {fileID: 5118393532011574698, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+  pickupspot: {fileID: 3687320448456179160}
 --- !u!212 &531832774889921083
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -735,7 +964,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &4317683797036795492
+--- !u!60 &1220220345
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -751,7 +980,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -760,14 +989,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.25, y: -0.15625}
-      - {x: 0.125, y: -0.15625}
-      - {x: 0.03125, y: -0.21875}
-      - {x: 0, y: -0.34375}
-      - {x: 0, y: -0.5}
-      - {x: 0.34375, y: -0.5}
-      - {x: 0.375, y: -0.4375}
-      - {x: 0.375, y: -0.21875}
+    - - {x: 0.25, y: 0.34375}
+      - {x: 0.125, y: 0.34375}
+      - {x: 0.03125, y: 0.28125}
+      - {x: 0, y: 0.15625}
+      - {x: 0, y: 0}
+      - {x: 0.34375, y: 0}
+      - {x: 0.375, y: 0.0625}
+      - {x: 0.375, y: 0.28125}
 --- !u!1 &8707991308993279582
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +1008,7 @@ GameObject:
   - component: {fileID: 6845257287508736066}
   - component: {fileID: 361642172299575323}
   - component: {fileID: 1731172316719032806}
-  - component: {fileID: 7232111892492807354}
+  - component: {fileID: 611482350}
   m_Layer: 0
   m_Name: Gem 2
   m_TagString: Treasure
@@ -798,7 +1027,8 @@ Transform:
   m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5756397176578193924}
   m_Father: {fileID: 9114691943132458766}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -815,6 +1045,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureName: exotic minerals
+  pickup: {fileID: 5118393532011574698, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+  pickupspot: {fileID: 5756397176578193924}
 --- !u!212 &1731172316719032806
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -867,7 +1099,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7232111892492807354
+--- !u!60 &611482350
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -883,7 +1115,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -892,12 +1124,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: -0.5}
-      - {x: 0.375, y: -0.5}
-      - {x: 0.375, y: -0.46875}
-      - {x: 0.21875, y: -0.28125}
-      - {x: -0.4375, y: -0.28125}
-      - {x: -0.5, y: -0.3125}
+    - - {x: -0.5, y: 0}
+      - {x: 0.375, y: 0}
+      - {x: 0.375, y: 0.03125}
+      - {x: 0.21875, y: 0.21875}
+      - {x: -0.4375, y: 0.21875}
+      - {x: -0.5, y: 0.1875}
 --- !u!1 &8781206368679222628
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +1141,7 @@ GameObject:
   - component: {fileID: 7810574727050510381}
   - component: {fileID: 1176623560248305015}
   - component: {fileID: 1710009862692043290}
-  - component: {fileID: 5579540402530830760}
+  - component: {fileID: 616498615}
   m_Layer: 0
   m_Name: Gem Old 2
   m_TagString: Treasure
@@ -928,7 +1160,8 @@ Transform:
   m_LocalPosition: {x: -2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5456217551430310305}
   m_Father: {fileID: 9114691943132458766}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -945,6 +1178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureName: exotic minerals
+  pickup: {fileID: 5118393532011574698, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+  pickupspot: {fileID: 5456217551430310305}
 --- !u!212 &1710009862692043290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -997,7 +1232,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5579540402530830760
+--- !u!60 &616498615
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1013,7 +1248,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -1022,13 +1257,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.28125, y: -0.25}
-      - {x: -0.46875, y: -0.40625}
-      - {x: -0.46875, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: -0.46875}
-      - {x: 0.4375, y: -0.3125}
-      - {x: 0.03125, y: -0.25}
+    - - {x: -0.28125, y: 0.25}
+      - {x: -0.46875, y: 0.09375}
+      - {x: -0.46875, y: 0}
+      - {x: 0.5, y: 0}
+      - {x: 0.5, y: 0.03125}
+      - {x: 0.4375, y: 0.1875}
+      - {x: 0.03125, y: 0.25}
 --- !u!1 &8830068662909184268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1275,7 @@ GameObject:
   - component: {fileID: 337149411524772840}
   - component: {fileID: 5884594356051959443}
   - component: {fileID: 7288273240923492202}
-  - component: {fileID: 5487663295330196961}
+  - component: {fileID: 1035095923}
   m_Layer: 0
   m_Name: Gem Old 1
   m_TagString: Treasure
@@ -1059,7 +1294,8 @@ Transform:
   m_LocalPosition: {x: -3.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8115764474983131226}
   m_Father: {fileID: 9114691943132458766}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1076,6 +1312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureName: exotic minerals
+  pickup: {fileID: 5118393532011574698, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+  pickupspot: {fileID: 8115764474983131226}
 --- !u!212 &7288273240923492202
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1128,7 +1366,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5487663295330196961
+--- !u!60 &1035095923
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1144,7 +1382,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -1153,14 +1391,45 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.1875, y: -0.1875}
-      - {x: 0.09375, y: -0.1875}
-      - {x: 0.03125, y: -0.21875}
-      - {x: -0.03125, y: -0.46875}
-      - {x: 0, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: -0.40625}
-      - {x: 0.46875, y: -0.34375}
+    - - {x: 0.1875, y: 0.3125}
+      - {x: 0.09375, y: 0.3125}
+      - {x: 0.03125, y: 0.28125}
+      - {x: -0.03125, y: 0.03125}
+      - {x: 0, y: 0}
+      - {x: 0.5, y: 0}
+      - {x: 0.5, y: 0.09375}
+      - {x: 0.46875, y: 0.15625}
+--- !u!1 &8993390822256639862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5756397176578193924}
+  m_Layer: 0
+  m_Name: Pickup Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5756397176578193924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8993390822256639862}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.03, y: 0.186, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6845257287508736066}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9114691943132458767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,7 +1455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9114691943132458767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 9.5, z: 0}
+  m_LocalPosition: {x: -5, y: 9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1225,7 +1494,7 @@ GameObject:
   - component: {fileID: 9114691943860342488}
   - component: {fileID: 9114691943860342492}
   - component: {fileID: 9114691943860342491}
-  - component: {fileID: 9114691943860342493}
+  - component: {fileID: 888462699}
   m_Layer: 0
   m_Name: Gem 1
   m_TagString: Treasure
@@ -1244,7 +1513,8 @@ Transform:
   m_LocalPosition: {x: -1.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6474519934603287384}
   m_Father: {fileID: 9114691943132458766}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1261,6 +1531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureName: exotic minerals
+  pickup: {fileID: 5118393532011574698, guid: 4ab790982d3859a46bfa2bbe26c59fdc, type: 3}
+  pickupspot: {fileID: 6474519934603287384}
 --- !u!212 &9114691943860342491
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1313,7 +1585,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &9114691943860342493
+--- !u!60 &888462699
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1329,7 +1601,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -1338,9 +1610,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.15625, y: -0.125}
-      - {x: -0.46875, y: -0.4375}
-      - {x: -0.46875, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: -0.40625}
-      - {x: 0, y: -0.125}
+    - - {x: -0.15625, y: 0.375}
+      - {x: -0.46875, y: 0.0625}
+      - {x: -0.46875, y: 0}
+      - {x: 0.5, y: 0}
+      - {x: 0.5, y: 0.09375}
+      - {x: 0, y: 0.375}
