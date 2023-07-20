@@ -54,7 +54,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 17
-  health: 3
 --- !u!114 &5837028515018011816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +104,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   onDone:
     m_PersistentCalls:
