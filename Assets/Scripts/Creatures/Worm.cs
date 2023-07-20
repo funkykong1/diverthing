@@ -79,7 +79,6 @@ public class Worm : MonoBehaviour
     {
         rend.sprite = sprites[1];
         aiPath.enabled = true;
-        //transform.LookAt(player, Vector2.up);
     }
     public void Bite()
     {
@@ -88,14 +87,18 @@ public class Worm : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
+        if(other.CompareTag("Player"))
+        {
+            ChaseRefresh();
+            rend.sprite = sprites[1];
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.name == "Player")
+        if(other.gameObject.tag == "Player")
         {
-            Vector2 dir = new Vector2(other.transform.position.x - this.transform.position.x,other.transform.position.y - this.transform.position.y );
+            Vector2 dir = new Vector2(other.transform.position.x - this.transform.position.x, other.transform.position.y - this.transform.position.y );
             other.rigidbody.AddForce(dir * knockback, ForceMode2D.Impulse);
 
             //deal damage too herer

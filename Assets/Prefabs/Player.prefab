@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1323925947005071461}
   - component: {fileID: 7864870285965468900}
   - component: {fileID: 5837028515018011816}
+  - component: {fileID: 1770544365}
   - component: {fileID: 6909690371834114753}
   - component: {fileID: 4661012019226478969}
   - component: {fileID: 1392453141}
@@ -52,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 17
+  health: 3
 --- !u!114 &5837028515018011816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,14 +66,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301441b4f59e49647b7047f900254082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 200
+  m_JumpForce: 400
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   m_GroundCheck: {fileID: 2577317775335013972}
   OnLandEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1770544365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141373718707519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab7555860f50f0439f5279ebf22044b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  strength: 16
+  delay: 0.15
+  onBegin:
+    m_PersistentCalls:
+      m_Calls: []
+  onDone:
     m_PersistentCalls:
       m_Calls: []
 --- !u!95 &6909690371834114753
@@ -158,8 +181,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 2
+  m_LinearDrag: 0.05
   m_AngularDrag: 0.05
   m_GravityScale: 0.5
   m_Material: {fileID: 0}
@@ -220,7 +243,7 @@ GameObject:
   - component: {fileID: 2577317775335013972}
   m_Layer: 3
   m_Name: Groundcheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
