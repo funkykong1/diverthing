@@ -15,7 +15,6 @@ public class Worm : MonoBehaviour
 
     public Sprite[] sprites;
     public Transform player;
-    public float knockback;
 
 
     public float chaseTimer;
@@ -80,28 +79,16 @@ public class Worm : MonoBehaviour
         rend.sprite = sprites[1];
         aiPath.enabled = true;
     }
-    public void Bite()
-    {
-
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
-            ChaseRefresh();
-            rend.sprite = sprites[1];
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            Vector2 dir = new Vector2(other.transform.position.x - this.transform.position.x, other.transform.position.y - this.transform.position.y );
-            other.rigidbody.AddForce(dir * knockback, ForceMode2D.Impulse);
-
-            //deal damage too herer
+            Health health;
+            if(health = other.GetComponent<Health>())
+            {
+                health.GetHit(1,transform.gameObject);
+            }
         }
     }
 
@@ -109,6 +96,7 @@ public class Worm : MonoBehaviour
     public void ChaseRefresh()
     {
         //if player re-enters the field of vision, resets timer
+        rend.sprite = sprites[1];
         chaseTimer = Random.Range(15f, 20f);
     }
 }

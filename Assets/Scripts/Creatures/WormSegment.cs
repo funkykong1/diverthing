@@ -22,17 +22,17 @@ public class WormSegment : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 8, true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
             worm.ChaseRefresh();
+
+            Health health;
+            if(health = other.GetComponent<Health>())
+            {
+                health.GetHit(0,transform.parent.gameObject);
+            }
         }
-    } 
+    }
 }

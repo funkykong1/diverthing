@@ -108258,10 +108258,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5855685058230897483, guid: 4ef5e6dd52e9b6947bd8e9a0af6612c8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ef5e6dd52e9b6947bd8e9a0af6612c8, type: 3}
 --- !u!1001 &5193722799881112151
@@ -108271,6 +108267,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1770544365, guid: 9a5d979d9298ac54aabbe0a282cb7a67, type: 3}
+      propertyPath: onBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1141373718707519, guid: 9a5d979d9298ac54aabbe0a282cb7a67, type: 3}
       propertyPath: m_Name
       value: Player
@@ -108318,10 +108318,6 @@ PrefabInstance:
     - target: {fileID: 1323925947005071461, guid: 9a5d979d9298ac54aabbe0a282cb7a67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5837028515018011816, guid: 9a5d979d9298ac54aabbe0a282cb7a67, type: 3}
-      propertyPath: m_WhatIsGround.m_Bits
-      value: 320
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a5d979d9298ac54aabbe0a282cb7a67, type: 3}
