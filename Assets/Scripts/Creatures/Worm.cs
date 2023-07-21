@@ -77,7 +77,7 @@ public class Worm : MonoBehaviour
     void Chase()
     {
         rend.sprite = sprites[1];
-        aiPath.enabled = true;
+        //aiPath.enabled = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)

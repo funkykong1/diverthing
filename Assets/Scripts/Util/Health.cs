@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
     {
         if(isDead)
             return;
-        if(sender.layer == gameObject.layer)
+        if(sender.tag != "Enemy")
             return;
 
         currentHealth -= amount;

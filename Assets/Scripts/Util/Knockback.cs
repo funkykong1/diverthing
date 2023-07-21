@@ -9,16 +9,21 @@ public class Knockback : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField]
-    private float strength = 16, delay = 0.15f;
+    private float strength, forceUp, delay;
 
     public UnityEvent onBegin, onDone;
 
     public void PlayFeedback(GameObject sender)
     {
+        if(sender.tag != "Enemy")
+            return;
+
         StopAllCoroutines();
         onBegin?.Invoke();
-        Vector2 direction = (transform.position-sender.transform.position).normalized;
-        rb.AddForce(direction * strength, ForceMode2D.Impulse);
+        
+        Vector2 direction = new Vector2(transform.position.x - sender.transform.position.x, 0);
+        rb.velocity += new Vector2(direction.x, forceUp) * strength;
+
         StartCoroutine(Reset());
 
 

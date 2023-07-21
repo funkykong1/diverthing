@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SnakeVision : MonoBehaviour
 {
-    private CircleCollider2D vision;
+    private CapsuleCollider2D vision;
     private Worm worm;
     void Start()
     {
-        worm = GetComponentInParent<Worm>();
-        vision = GetComponent<CircleCollider2D>();
+        worm = GetComponentInChildren<Worm>();
+        vision = GetComponent<CapsuleCollider2D>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
