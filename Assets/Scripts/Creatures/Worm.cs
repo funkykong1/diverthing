@@ -14,6 +14,7 @@ public class Worm : MonoBehaviour
     private Rigidbody2D rb;
 
     public Sprite[] sprites;
+    public Transform player;
 
 
     public float chaseTimer;
@@ -22,7 +23,7 @@ public class Worm : MonoBehaviour
         //initialize stuff
         rend = GetComponent<SpriteRenderer>();
         hitBox = GetComponent<CapsuleCollider2D>();
-        circle = this.GetComponent<CircleCollider2D>();
+        circle = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>(); 
 
         //ignore collisions with ground and other creatures (and the worm itself)
@@ -76,14 +77,18 @@ public class Worm : MonoBehaviour
     void Chase()
     {
         rend.sprite = sprites[1];
-        //aiPath.enabled = true;
+        aiPath.enabled = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
-
+            Health health;
+            if(health = other.GetComponent<Health>())
+            {
+                health.GetHit(1,transform.gameObject);
+            }
         }
     }
 

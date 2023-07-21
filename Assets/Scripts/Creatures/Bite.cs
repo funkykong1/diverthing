@@ -2,21 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeVision : MonoBehaviour
+public class Bite : MonoBehaviour
 {
-    private CircleCollider2D vision;
+    private CapsuleCollider2D maw;
     private Worm worm;
     void Start()
     {
         worm = GetComponentInParent<Worm>();
-        vision = GetComponent<CircleCollider2D>();
+        maw = GetComponent<CapsuleCollider2D>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
-            worm.ChaseRefresh();
+            Health health;
+            if(health = other.GetComponent<Health>())
+            {
+                health.GetHit(1,transform.parent.gameObject);
+            }
         }
     }
 }
