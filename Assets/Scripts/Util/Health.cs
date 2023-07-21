@@ -28,6 +28,11 @@ public class Health : MonoBehaviour
         if(sender.tag != "Enemy")
             return;
 
+        //prevents plr from getting juggled by 2 separate bits
+        Knockback kb = GetComponent<Knockback>();
+        if(kb.isHit)
+            return;
+
         currentHealth -= amount;
         
         if(currentHealth > 0)
