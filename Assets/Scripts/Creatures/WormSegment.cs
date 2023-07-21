@@ -28,11 +28,7 @@ public class WormSegment : MonoBehaviour
         {
             worm.ChaseRefresh();
 
-            Health health;
-            if(health = other.GetComponent<Health>())
-            {
-                health.GetHit(0,transform.parent.gameObject);
-            }
+
         }
     }
 }

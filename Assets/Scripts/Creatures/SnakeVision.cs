@@ -9,7 +9,7 @@ public class SnakeVision : MonoBehaviour
     void Start()
     {
         worm = GetComponentInParent<Worm>();
-        vision = GetComponent<CircleCollider2D>();
+        vision = this.GetComponent<CircleCollider2D>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
