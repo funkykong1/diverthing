@@ -59,14 +59,18 @@ public class Fish : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            ChaseRefresh();
-            rend.sprite = sprites[1];
+            Health health;
+            if(health = other.GetComponent<Health>())
+            {
+                health.GetHit(1,transform.gameObject);
+            }
         }
     }   
 
-    void ChaseRefresh()
+    public void ChaseRefresh()
     {
         //if player re-enters the field of vision, resets timer
+        rend.sprite = sprites[1];
         chaseTimer = Random.Range(10f, 18f);
     }
 }
