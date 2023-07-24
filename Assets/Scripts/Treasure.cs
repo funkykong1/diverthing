@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 
 public class Treasure : MonoBehaviour
 {
 
+    private Tilemap tilemap;
     public string treasureName;
     public GameObject pickup;
     public Transform pickupspot;
@@ -17,7 +19,7 @@ public class Treasure : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
     
 
