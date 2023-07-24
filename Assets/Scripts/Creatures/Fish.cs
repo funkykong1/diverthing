@@ -28,6 +28,7 @@ public class Fish : MonoBehaviour
         hitBox = GetComponent<CapsuleCollider2D>();
         aiPath = GetComponent<AIPath>();
         setter = GetComponent<AIDestinationSetter>();
+        tilemap = GameObject.Find("Tilemap Base").GetComponent<Tilemap>();
     
         chaseTimer = 0;
     }
@@ -78,6 +79,7 @@ public class Fish : MonoBehaviour
             if(health = other.GetComponent<Health>())
             {
                 health.GetHit(1,transform.gameObject);
+                Tile tile = new Tile();
                 
             }
         }
