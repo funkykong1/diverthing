@@ -28,7 +28,7 @@ public class Fish : MonoBehaviour
         hitBox = GetComponent<CapsuleCollider2D>();
         aiPath = GetComponent<AIPath>();
         setter = GetComponent<AIDestinationSetter>();
-        tilemap = GameObject.Find("Tilemap Base").GetComponent<Tilemap>();
+        tilemap = GameObject.Find("Tilemap Empty").GetComponent<Tilemap>();
     
         chaseTimer = 0;
     }
@@ -97,9 +97,19 @@ public class Fish : MonoBehaviour
         idleTimer = Random.Range(5f, 25f);
         aiPath.maxSpeed = 1.5f;
         idling = true;
+
+        BoundsInt bounds = new BoundsInt(0,0,0,10,10,0);
+        bounds.position = new Vector3Int(((int)transform.position.x), ((int)transform.position.y));
+        TileBase[] targetTiles = tilemap.GetTilesBlock(bounds);
+
+        TileBase tile = targetTiles[Random.Range(0, targetTiles.Length)];
+
+        
+
         Vector2 spot = new Vector2(this.transform.position.x, this.transform.position.y) + Random.insideUnitCircle * range;
         GameObject point = new GameObject("IDLE POINT");
         point.transform.position = spot;
+        
         setter.target = point.transform;
 
         yield return new WaitForSeconds(idleTimer);
