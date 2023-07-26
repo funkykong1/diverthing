@@ -6,11 +6,13 @@ using UnityEngine.Tilemaps;
 
 public class Fish : MonoBehaviour
 {
-    private Tilemap tilemap;
 
+    //FISH AI
+
+    //a* references
     private AIPath aiPath;
     private AIDestinationSetter setter;
-    private Seeker seeker;
+
 
     private CircleCollider2D circle;
     private CapsuleCollider2D hitBox;
@@ -19,8 +21,11 @@ public class Fish : MonoBehaviour
 
     [SerializeField]
     private float range, idleTimer;
-    private bool idling = false;
 
+    //Solely so update doesnt start 9000 coroutines
+    private bool idleCoroutineWaiting = false;
+
+    public float distance, detectRange;
     public float chaseTimer;
     void Awake()
     {
@@ -31,10 +36,8 @@ public class Fish : MonoBehaviour
 
         aiPath = GetComponent<AIPath>();
         setter = GetComponent<AIDestinationSetter>();
-        seeker = GetComponent<Seeker>();
 
-        tilemap = GameObject.Find("Tilemap Empty").GetComponent<Tilemap>();
-    
+
         chaseTimer = 0;
     }
 
@@ -51,17 +54,31 @@ public class Fish : MonoBehaviour
         else if(aiPath.desiredVelocity.x <= -0.01f)
             transform.localScale = new Vector3(-1f, 1f, 1f);
 
+        //update distance between fish and plr
+        distance = Vector2.Distance(this.transform.position, GameObject.Find("Player").transform.position);
+        
+        //IF CLOSE TO FISH AND NOT CHASING, START CHASING
+        //If already chasing, make range smaller
+        //Makes it feel like the fish only keeps chasing if it thinks its getting u
+        if(distance <= detectRange)
+            ChaseRefresh();
+
+        //IF chaseTimer not over, give chase
         if(chaseTimer > 0)
             Chase();
-        else if (!idling)
+        //otherwise, begin idling process
+        else if (!idleCoroutineWaiting)
         {
-            idling = true;
+
+            //FISH CALM HERE
+            idleCoroutineWaiting = true;
             StartCoroutine(Idle());
-            rend.sprite = sprites[0];
         }
+
     }
     void LateUpdate()
     {
+        //Tick chasetimer down 
         if(chaseTimer > 0)
             chaseTimer -= 1 * Time.deltaTime;
     }
@@ -69,7 +86,7 @@ public class Fish : MonoBehaviour
     void Chase()
     {
         //!!!food spotted!!! stop idle coroutine
-        if(idling)
+        if(idleCoroutineWaiting)
             StopCoroutine(Idle());
 
         //manually change target and speed
@@ -77,29 +94,39 @@ public class Fish : MonoBehaviour
         aiPath.maxSpeed = 3;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        //if player, hit it for one(1) dmg
         if(other.CompareTag("Player"))
         {
             Health health;
             if(health = other.GetComponent<Health>())
             {
                 health.GetHit(1,transform.gameObject);
-                Tile tile = new Tile();
-                
             }
         }
-    }   
+    }
 
+    
+    //
     public void ChaseRefresh()
     {
-        //if player re-enters the field of vision, resets timer
+        //Timer doesnt get refreshed but the detect range is smaller
+        detectRange = 1;
+        aiPath.maxSpeed = 3;
         rend.sprite = sprites[1];
         chaseTimer = Random.Range(10f, 18f);
     }
     public IEnumerator Idle()
     {
-        //makes a temporary gameobject and goes to it. Idling bool prevents repeats
+        //fish no longer angry
+        rend.sprite = sprites[0];
+        setter.target = null;
+
+        
+
+
+        //Fish randomly chooses spots to idle around, moves slower
         idleTimer = Random.Range(5f, 25f);
         aiPath.maxSpeed = 1.5f;
 
@@ -119,9 +146,14 @@ public class Fish : MonoBehaviour
         //Gets nearest walkable node to the vector3 given
         GraphNode node = AstarPath.active.GetNearest(spot, nn).node;
         
+        //manually set destination without use of dest setter or seeker
         aiPath.destination = (Vector3)node.position;
 
+
         yield return new WaitForSeconds(idleTimer);
-        idling = false;
+
+        //Make the fish range larger here again, kind of simulating it having rested
+        detectRange = 2;
+        idleCoroutineWaiting = false;
     }
 }

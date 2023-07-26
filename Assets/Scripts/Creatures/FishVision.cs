@@ -8,11 +8,11 @@ public class FishVision : MonoBehaviour
     private Fish fish;
     void Start()
     {
-        fish = GetComponentInChildren<Fish>();
+        fish = GetComponentInParent<Fish>();
         vision = GetComponent<CircleCollider2D>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
