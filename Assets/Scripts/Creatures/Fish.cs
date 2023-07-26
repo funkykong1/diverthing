@@ -10,6 +10,8 @@ public class Fish : MonoBehaviour
 
     private AIPath aiPath;
     private AIDestinationSetter setter;
+    private Seeker seeker;
+
     private CircleCollider2D circle;
     private CapsuleCollider2D hitBox;
     private SpriteRenderer rend;
@@ -26,8 +28,11 @@ public class Fish : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         circle = GetComponent<CircleCollider2D>();
         hitBox = GetComponent<CapsuleCollider2D>();
+
         aiPath = GetComponent<AIPath>();
         setter = GetComponent<AIDestinationSetter>();
+        seeker = GetComponent<Seeker>();
+
         tilemap = GameObject.Find("Tilemap Empty").GetComponent<Tilemap>();
     
         chaseTimer = 0;
@@ -50,6 +55,7 @@ public class Fish : MonoBehaviour
             Chase();
         else if (!idling)
         {
+            idling = true;
             StartCoroutine(Idle());
             rend.sprite = sprites[0];
         }
@@ -96,21 +102,29 @@ public class Fish : MonoBehaviour
         //makes a temporary gameobject and goes to it. Idling bool prevents repeats
         idleTimer = Random.Range(5f, 25f);
         aiPath.maxSpeed = 1.5f;
-        idling = true;
 
-        BoundsInt bounds = new BoundsInt(0,0,0,10,10,0);
-        bounds.position = new Vector3Int(((int)transform.position.x), ((int)transform.position.y));
-        TileBase[] targetTiles = tilemap.GetTilesBlock(bounds);
+        //Only lets the fish use the "Grid Graph" for node searching (doesnt run into walls)
+		GraphMask mask1 = GraphMask.FromGraphName("Grid Graph");
 
-        TileBase tile = targetTiles[Random.Range(0, targetTiles.Length)];
+        //Nearest node constraint constructor
+		NNConstraint nn = NNConstraint.Default;
 
-        
+        //set the constraint to the Grid Graph
+		nn.graphMask = mask1;
 
+        //get a random vector 2 in float range
+        //'this' keywords probably moot
         Vector2 spot = new Vector2(this.transform.position.x, this.transform.position.y) + Random.insideUnitCircle * range;
-        GameObject point = new GameObject("IDLE POINT");
-        point.transform.position = spot;
+
+        //Gets nearest walkable node to the vector3 given
+        GraphNode node = AstarPath.active.GetNearest(spot, nn).node;
         
-        setter.target = point.transform;
+        // spot = Vector2Int.RoundToInt(spot);
+        GameObject point = new GameObject("IDLE POINT");
+        point.transform.position = (Vector3)node.position;
+
+        
+        aiPath.destination = (Vector3)node.position;
 
         yield return new WaitForSeconds(idleTimer);
         idling = false;

@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8072458933871354483}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.83, y: -0.88, z: 0}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -53,8 +53,8 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: a141f4cf1cdb0ec4bb4bb47060bffa6b, type: 3}
   - {fileID: 21300000, guid: 8d622f131e0fc6c43a968ba7834a2f95, type: 3}
-  range: 0
-  idleTimer: 0
+  range: 10
+  idleTimer: 15
   chaseTimer: 0
 --- !u!114 &5648525203270947036
 MonoBehaviour:
