@@ -119,15 +119,9 @@ public class Fish : MonoBehaviour
         //Gets nearest walkable node to the vector3 given
         GraphNode node = AstarPath.active.GetNearest(spot, nn).node;
         
-        // spot = Vector2Int.RoundToInt(spot);
-        GameObject point = new GameObject("IDLE POINT");
-        point.transform.position = (Vector3)node.position;
-
-        
         aiPath.destination = (Vector3)node.position;
 
         yield return new WaitForSeconds(idleTimer);
         idling = false;
-        Destroy(point);
     }
 }
