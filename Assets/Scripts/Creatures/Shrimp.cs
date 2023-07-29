@@ -5,19 +5,25 @@ using Pathfinding;
 
 public class Shrimp : MonoBehaviour
 {
+
+    //shrimp mover
+
+
+    //a*
     private AIPath aiPath;
-    private AIDestinationSetter setter;
 
     private CircleCollider2D circle;
     private CapsuleCollider2D hitBox;
     private SpriteRenderer rend;
     public Sprite[] sprites;
 
-    
+    private float range, idleTimer;
 
+    //Solely so update doesnt start 9000 coroutines
+    private bool idleCoroutineWaiting, isRunning;
 
-
-    public float RunTimer;
+    public float distance, detectRange;
+    public float runTimer;
     void Awake()
     {
 
@@ -26,14 +32,13 @@ public class Shrimp : MonoBehaviour
         circle = GetComponent<CircleCollider2D>();
         hitBox = GetComponent<CapsuleCollider2D>();
         aiPath = GetComponent<AIPath>();
-        setter = GetComponent<AIDestinationSetter>();
 
-        RunTimer = 0;
+        runTimer = 0;
     }
 
     void Start()
     {
-
+        rend.sprite = sprites[0];
     }
 
     void Update()
@@ -44,28 +49,21 @@ public class Shrimp : MonoBehaviour
         else if(aiPath.desiredVelocity.x <= -0.01f)
             transform.localScale = new Vector3(-1f, 1f, 1f);
 
-        if(RunTimer > 0)
+
+        if(distance <= detectRange)
+            RunRefresh();
+        
+
+        if (!idleCoroutineWaiting && !isRunning)
         {
-            Run();
-        }
-        else
-        {
-            //eventually change this to an idle thing
-            aiPath.enabled = false;
-            
-            rend.sprite = sprites[0];
+            StartCoroutine(Idle());
         }
         
     }
     void LateUpdate()
     {
-        if(RunTimer > 0)
-            RunTimer -= 1 * Time.deltaTime;
-    }
-
-    void Run()
-    {
-        aiPath.enabled = true;
+        if(runTimer > 0)
+            runTimer -= 1 * Time.deltaTime;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -74,32 +72,80 @@ public class Shrimp : MonoBehaviour
         {
             PickMeUp();
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            RunRefresh();
-            rend.sprite = sprites[1];
-        }
-    }   
+    } 
 
     void RunRefresh()
     {
-        GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
-        GameObject targetPoint = points[Random.Range(0, points.Length)];
 
-        float dist = Vector2.Distance(targetPoint.transform.position, transform.position);
+        //this makes the shrimp go for a rando spot
+        //Can sometimes be dumb and go like 2 foot. Its a shrimp though
+        if(!isRunning)
+            GetRandomSpot(30);
 
-        if(RunTimer <= 0)
-        {
-            setter.target = targetPoint.transform;
-        }
+        //bool for only one path
+        isRunning = true;
+
+        //run sprite
+        rend.sprite = sprites[1];
+
+        //shrimp is alert and goes faster and sees further
+        detectRange = 3;
+        aiPath.maxSpeed = 4f;
+
+    }
+
+    //when an AiPath is completed
+    void OnPathComplete()
+    {
+        //shrimp checks for player again if running with slightly greater range
+        if(distance <= detectRange * 1.5 && isRunning)
+            RunRefresh();
+        else
+        //calms down if player isnt near anymore
+        isRunning = false;
+    }
+
+    public IEnumerator Idle()
+    {
+        idleCoroutineWaiting = true;
+
+        //shrimp no longer running round
+        rend.sprite = sprites[0];
 
 
-        //if player re-enters the field of vision, resets timer
-        RunTimer = Random.Range(6f, 10f);
+        //Shrimp randomly chooses spots to idle around, moves slower
+        idleTimer = Random.Range(3f, 9f);
+        aiPath.maxSpeed = 2f;
+
+        GetRandomSpot(5);
+
+        yield return new WaitForSeconds(idleTimer);
+
+        //Shrimp range is smaller during its downtime. Something like its eating moss idk
+        detectRange = 2;
+        idleCoroutineWaiting = false;
+    }
+
+    //function for the random node thing
+    private void GetRandomSpot(float radius)
+    {
+        //Only lets the critter use the "Grid Graph" for node searching (doesnt run into walls)
+		GraphMask mask1 = GraphMask.FromGraphName("Grid Graph");
+
+        //Nearest node constraint constructor
+		NNConstraint nn = NNConstraint.Default;
+
+        //set the constraint to the Grid Graph
+		nn.graphMask = mask1;
+
+        //get a random vector 2 in float radius
+        Vector2 spot = new Vector2(this.transform.position.x, this.transform.position.y) + Random.insideUnitCircle * radius;
+
+        //Gets nearest walkable node to the vector3 given
+        GraphNode node = AstarPath.active.GetNearest(spot, nn).node;
+
+        //manually set destination without use of dest setter or seeker
+        aiPath.destination = (Vector3)node.position;
     }
 
     void PickMeUp()

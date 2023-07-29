@@ -91,7 +91,8 @@ MonoBehaviour:
   rb: {fileID: 1392453141}
   strength: 35
   forceUp: 0.1
-  delay: 0.1
+  iFrameDuration: 2
+  flashDelay: 0.08
   isHit: 0
   onBegin:
     m_PersistentCalls:

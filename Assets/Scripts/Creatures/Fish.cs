@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using UnityEngine.Tilemaps;
+
 
 public class Fish : MonoBehaviour
 {
@@ -57,7 +57,7 @@ public class Fish : MonoBehaviour
         //update distance between fish and plr
         distance = Vector2.Distance(this.transform.position, GameObject.Find("Player").transform.position);
         
-        //IF CLOSE TO FISH AND NOT CHASING, START CHASING
+        //IF CLOSE TO Player AND NOT CHASING, START CHASING
         //If already chasing, make range smaller
         //Makes it feel like the fish only keeps chasing if it thinks its getting u
         if(distance <= detectRange)
@@ -108,7 +108,7 @@ public class Fish : MonoBehaviour
     }
 
     
-    //
+    
     public void ChaseRefresh()
     {
         //Timer doesnt get refreshed but the detect range is smaller
