@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: 5234858178296013931}
   - component: {fileID: 1892447598035963452}
   - component: {fileID: 3386516171508434279}
-  - component: {fileID: 1892447597550590275}
   - component: {fileID: 7610878941034991591}
   m_Layer: 7
   m_Name: Shrimp
@@ -197,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892447598035963450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 1, z: 0}
+  m_LocalPosition: {x: -4.52, y: 1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -219,7 +218,9 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: aa21b2fdccef753478a1c76c8596230a, type: 3}
   - {fileID: 21300000, guid: 25464d7fda27ace4985c3ecd51e914ae, type: 3}
-  RunTimer: 0
+  distance: 0
+  detectRange: 0
+  runTimer: 0
 --- !u!114 &2605303865320635541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,13 +256,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892447598035963450}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.5
+  radius: 0.3
   height: 0.01
   canMove: 1
   maxSpeed: 5
@@ -371,23 +372,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
---- !u!70 &1892447597550590275
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892447598035963450}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.06582333, y: 0.03238779}
-  m_Size: {x: 0.31633803, y: 0.25638708}
-  m_Direction: 1
+  m_Radius: 0.15
 --- !u!50 &7610878941034991591
 Rigidbody2D:
   serializedVersion: 4

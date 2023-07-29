@@ -55,7 +55,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGameActive = true;
-        SpawnTreasures();
+        //SpawnTreasures();
+        //SpawnEnemies();
         titleScreen.gameObject.SetActive(false);
     }
 
@@ -69,18 +70,21 @@ public class GameManager : MonoBehaviour
 
 
 
-
+    public static void SpawnEnemies()
+    {
+        instance.StartCoroutine(instance.EnemyTime());
+    }
     public static void SpawnTreasures()
     {
         instance.StartCoroutine(instance.TreasureTime());
     }
     
-    private IEnumerator SpawnEnemies(int diff)
+    private IEnumerator EnemyTime()
     {
         if(currentEnemies != null)
             Destroy(currentEnemies);
 
-        int i = Random.Range(0, allTreasureSets.Length);
+        int i = Random.Range(0, enemySets.Length);
 
         yield return currentEnemies = Instantiate(enemySets[i], new Vector2(0,0), Quaternion.identity); 
     }
