@@ -218,8 +218,10 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: aa21b2fdccef753478a1c76c8596230a, type: 3}
   - {fileID: 21300000, guid: 25464d7fda27ace4985c3ecd51e914ae, type: 3}
+  range: 7
+  idleTimer: 0
   distance: 0
-  detectRange: 0
+  detectRange: 2
   runTimer: 0
 --- !u!114 &2605303865320635541
 MonoBehaviour:

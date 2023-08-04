@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGameActive = true;
-        //SpawnTreasures();
-        //SpawnEnemies();
+        SpawnTreasures();
+        SpawnEnemies();
         titleScreen.gameObject.SetActive(false);
     }
 
