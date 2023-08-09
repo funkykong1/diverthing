@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Knockback : MonoBehaviour
 {
+
+
     [SerializeField]
     private Rigidbody2D rb;
 
@@ -14,7 +16,7 @@ public class Knockback : MonoBehaviour
     public bool isHit;
 
     public UnityEvent onBegin, onDone;
-    private SpriteRenderer rend;
+    private SpriteRenderer rend,gun;
 
     //transparency for milder iframe effect
     private Color opaque = new Color(255, 255, 255, 1);
@@ -24,6 +26,7 @@ public class Knockback : MonoBehaviour
     void Start()
     {
         rend = GetComponent<SpriteRenderer>();
+        gun = GameObject.Find("Gun").GetComponent<SpriteRenderer>();
     }
 
     public void PlayFeedback(GameObject sender)
@@ -52,16 +55,20 @@ public class Knockback : MonoBehaviour
             // Alternate between 0 and 1 scale to simulate flashing
             if (rend.color == opaque)
             {
+                
+                gun.color = transparent;
                 rend.color = transparent;
             }
             else
             {
+                gun.color = opaque;
                 rend.color = opaque;
             }
             yield return new WaitForSeconds(flashDelay);
         }
         //i frames end here
         rend.color = opaque;
+        gun.color = opaque;
         isHit = false;
         onDone?.Invoke();
     }

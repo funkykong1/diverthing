@@ -7,21 +7,16 @@ using UnityEngine.Tilemaps;
 public class Treasure : MonoBehaviour
 {
 
-    private Tilemap tilemap;
     public string treasureName;
     public GameObject pickup;
     public Transform pickupspot;
+
 
     // Update is called once per frame
     void Update()
     {
         //glimmer anim here
     }
-    void Start()
-    {
-
-    }
-    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,14 +29,9 @@ public class Treasure : MonoBehaviour
     public void PickMeUp()
     {
         Debug.Log("Obtained " + treasureName + "!");
-        //UIManager.UpdateScore(1);
+        UIManager.UpdateScore(1);
         //TreasureMaster.allItems.Remove(gameObject);
         Instantiate(pickup, pickupspot.position, Quaternion.identity);
-
-        //if(TreasureMaster.allItems.Count == 0)
-            //GameManager.StartEscape();
-
-
         Destroy(gameObject);
     }
 }

@@ -74,13 +74,6 @@ public class Shrimp : MonoBehaviour
             runTimer -= 1 * Time.deltaTime;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.name.Equals("Player"))
-        {
-            PickMeUp();
-        }
-    } 
 
     void RunRefresh()
     {
@@ -157,18 +150,5 @@ public class Shrimp : MonoBehaviour
         aiPath.destination = (Vector3)node.position;
     }
 
-    void PickMeUp()
-    {
-        Debug.Log("Obtained a deep sea critter!");
-        //UIManager.UpdateScore(1);
-        //TreasureMaster.allItems.Remove(gameObject);
-        //Instantiate(explosion, transform.position, Quaternion.identity);
-
-        //if(TreasureMaster.allItems.Count == 0)
-            //GameManager.StartEscape();
-
-
-        Destroy(gameObject);
-    }
 }
 

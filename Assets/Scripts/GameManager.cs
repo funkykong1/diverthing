@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
 
     //idk
-    private static GameManager instance;
+    static GameManager instance;
 
     private void Awake()
     {
@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+        
 
 
     }
@@ -68,7 +70,10 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
     }
 
-
+    public void Escape()
+    {
+        
+    }
 
     public static void SpawnEnemies()
     {
