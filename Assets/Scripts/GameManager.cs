@@ -12,21 +12,16 @@ public class GameManager : MonoBehaviour
     public GameObject[] allTreasureSets;
     public GameObject[] enemySets;
 
-    //how many treasures collected
-    public int tally;
-
     public bool isGameActive;
 
     //need to be public. ui text
-    public TextMeshProUGUI scoreText, highScoreText, gameOverText;
+    public TextMeshProUGUI scoreText, highScoreText;
 
     //timer which acts as a score in the end
     public float gameTimer;
 
-    public Button restartButton;
-
     //current treasure prefab in play
-    private GameObject currentSet, currentEnemies, titleScreen;
+    private GameObject currentSet, currentEnemies, titleScreen, gameOverScreen;
 
 
     //idk
@@ -38,21 +33,16 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
-
-        
-
-
     }
 
     void Start()
     {
+        //no need for publics cluttering gamemanager
         titleScreen = GameObject.Find("Title Screen");
+        gameOverScreen = GameObject.Find("Game Over Screen");
+        gameOverScreen.gameObject.SetActive(false);
     }
 
-    void Update()
-    {
-
-    }
 
     public void StartGame()
     {
@@ -64,15 +54,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        gameOverScreen.gameObject.SetActive(true);
         isGameActive = false;
-
-        restartButton.gameObject.SetActive(true);
-        gameOverText.gameObject.SetActive(true);
+        Destroy(currentEnemies);
+        Destroy(currentSet);
     }
 
     public void Escape()
     {
-        
+
     }
 
     public static void SpawnEnemies()

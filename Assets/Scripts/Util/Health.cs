@@ -6,8 +6,8 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
 
-    [SerializeField]
-    private int currentHealth, maxHealth;
+
+    public int currentHealth, maxHealth;
 
     public UnityEvent<GameObject> onHitWithReference, onDeathWithReference;
 
@@ -34,6 +34,7 @@ public class Health : MonoBehaviour
             return;
 
         currentHealth -= amount;
+        UIManager.UpdateLives(currentHealth);
         
         if(currentHealth > 0)
         {
@@ -41,6 +42,8 @@ public class Health : MonoBehaviour
         }   
         else
         {
+            GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+            gm.GameOver();
             onDeathWithReference?.Invoke(sender);
             isDead = true;
             Destroy(gameObject); 
