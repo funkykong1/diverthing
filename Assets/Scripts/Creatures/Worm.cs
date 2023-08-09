@@ -56,8 +56,6 @@ public class Worm : MonoBehaviour
     {
         //docile face
         rend.sprite = sprites[0];
-        //worm moves completely freely regardless of graph
-        aiPath.constrainInsideGraph = false;
         //let the worm roam through blocks
         seeker.graphMask = 9;
 

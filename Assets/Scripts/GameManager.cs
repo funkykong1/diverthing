@@ -8,17 +8,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
+    //makes the game work
+
     //prefab things housing every enemy
     public GameObject[] allTreasureSets;
     public GameObject[] enemySets;
 
     public bool isGameActive;
-
-    //need to be public. ui text
-    public TextMeshProUGUI scoreText, highScoreText;
-
-    //timer which acts as a score in the end
-    public float gameTimer;
 
     //current treasure prefab in play
     private GameObject currentSet, currentEnemies, titleScreen, gameOverScreen;
@@ -60,7 +56,7 @@ public class GameManager : MonoBehaviour
         Destroy(currentSet);
     }
 
-    public void Escape()
+    public static void Escape()
     {
 
     }
