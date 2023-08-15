@@ -12,6 +12,8 @@ public class Gun : MonoBehaviour
     private float maxDistance = 10f;
     private Vector2 grapplePoint;
 
+    public float grapplingCooldown;
+    private bool grappling;
 
     // Update is called once per frame
     void Update()
@@ -22,17 +24,30 @@ public class Gun : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         //
 
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+            StartGrapple();
 
+        //tick grapple gun timer down
+        if(grapplingCooldown >= 0)
+            grapplingCooldown -= 1 * Time.deltaTime;
     }
 
     void StartGrapple()
     {
-        RaycastHit2D hit =  Physics2D.Raycast(barrel.position, Vector3.forward, maxDistance, 6);
+        if(grapplingCooldown > 0)
+            return;
+
+        grappling = true;
+        
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast((Vector2)barrel.position, (Vector2)barrel.transform.right, maxDistance, LayerMask.GetMask("Ground"));
+        
         if(hit)
         {
-            grapplePoint = hit.point;
-            
+            Debug.Log("Fuckj");
         }
+
+        
     }
 }
 
