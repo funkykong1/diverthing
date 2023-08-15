@@ -9,11 +9,17 @@ public class Gun : MonoBehaviour
 
     public Transform barrel;
     public LayerMask ground;
-    private float maxDistance = 10f;
+    public float maxDistance = 10f;
     private Vector2 grapplePoint;
 
-    public float grapplingCooldown;
+    public float grapplingCooldown, grappleDelayTime;
     private bool grappling;
+    private LineRenderer lr;
+
+    void Start()
+    {
+        lr = GetComponent<LineRenderer>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,25 +35,54 @@ public class Gun : MonoBehaviour
 
         //tick grapple gun timer down
         if(grapplingCooldown >= 0)
-            grapplingCooldown -= 1 * Time.deltaTime;
+            grapplingCooldown -= Time.deltaTime;
+    }
+
+    void LateUpdate()
+    {
+        if(grappling)
+            lr.SetPosition(0, barrel.position);
     }
 
     void StartGrapple()
     {
         if(grapplingCooldown > 0)
             return;
-
-        grappling = true;
         
+        grappling = true;
+
         RaycastHit2D hit;
         hit = Physics2D.Raycast((Vector2)barrel.position, (Vector2)barrel.transform.right, maxDistance, LayerMask.GetMask("Ground"));
         
         if(hit)
         {
-            Debug.Log("Fuckj");
-        }
+            grapplePoint = hit.point;
 
+            Invoke(nameof(ExecuteGrapple), grappleDelayTime);
+        }
+        else
+        {
+            grapplePoint = barrel.position + barrel.right * maxDistance;
+
+            Invoke(nameof(StopGrapple), grappleDelayTime);
+        }
         
+        lr.enabled = true;
+        lr.SetPosition(1, grapplePoint);
+        
+    }
+
+    private void ExecuteGrapple()
+    {
+
+    }
+
+    private void StopGrapple()
+    {
+        grappling = false;
+
+        grapplingCooldown = 2;
+
     }
 }
 
