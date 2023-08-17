@@ -158,9 +158,9 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.23852088, y: 0.015614857}
-  m_Size: {x: 0.046363626, y: 0.030921556}
+  m_Offset: {x: 0.23220289, y: 0.015614836}
+  m_Size: {x: 0.03372765, y: 0.016665785}
   m_Direction: 1

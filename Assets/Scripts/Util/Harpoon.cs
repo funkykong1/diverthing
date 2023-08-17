@@ -54,6 +54,7 @@ public class Harpoon : MonoBehaviour
         {
             //if recently launched and hits ground, latch on
             isConnected = true;
+            rb.simulated = false;
         }
     }
 }
