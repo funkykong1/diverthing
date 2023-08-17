@@ -14,16 +14,19 @@ public class Gun : MonoBehaviour
 
     public float grapplingCooldown, grappleDelayTime;
 
+    
     public GameObject harpoon;
+    public Sprite[] sprites;
+
     private bool grappling;
     private LineRenderer lr;
-    private Rigidbody2D rb;
-    
+    private SpriteRenderer rend;
+    private GameObject activeHarpoon;
     public float force;
 
     void Start()
     {
-        rb = harpoon.GetComponent<Rigidbody2D>();
+        rend = GetComponent<SpriteRenderer>();
         lr = GetComponent<LineRenderer>();
     }
 
@@ -42,6 +45,19 @@ public class Gun : MonoBehaviour
         //tick grapple gun timer down
         if(grapplingCooldown >= 0)
             grapplingCooldown -= Time.deltaTime;
+
+
+        if(activeHarpoon != null)
+        {
+            lr.enabled = true;
+            lr.SetPosition(1, activeHarpoon.transform.position);
+        }
+        else
+        {
+            lr.enabled = false;
+        }
+
+
     }
 
     void LateUpdate()
@@ -70,11 +86,8 @@ public class Gun : MonoBehaviour
         {
             grapplePoint = barrel.position + barrel.right * maxDistance;
 
-            Invoke(nameof(StopGrapple), grappleDelayTime);
+            Invoke(nameof(ExecuteGrapple), grappleDelayTime);
         }
-        
-        lr.enabled = true;
-        lr.SetPosition(1, harpoon.transform.position);
         
     }
 
@@ -82,18 +95,21 @@ public class Gun : MonoBehaviour
     {
         // if(grappling)
         //     return;
-
+        rend.sprite = sprites[1];
         grappling = true;
+        activeHarpoon = Instantiate(harpoon, barrel.position, Quaternion.identity);
 
-        rb.simulated = true;
-        rb.AddForce(harpoon.transform.right * force, ForceMode2D.Impulse);
-
+        lr.enabled = true;
+        lr.SetPosition(1, activeHarpoon.transform.position);
     }
 
     private void StopGrapple()
     {
         if(!grappling)
             return;
+
+        //WHEN THING REELED IN
+        rend.sprite = sprites[0];
         grappling = false;
 
         grapplingCooldown = 2;
