@@ -13,11 +13,17 @@ public class Gun : MonoBehaviour
     private Vector2 grapplePoint;
 
     public float grapplingCooldown, grappleDelayTime;
+
+    public GameObject harpoon;
     private bool grappling;
     private LineRenderer lr;
+    private Rigidbody2D rb;
+    
+    public float force;
 
     void Start()
     {
+        rb = harpoon.GetComponent<Rigidbody2D>();
         lr = GetComponent<LineRenderer>();
     }
 
@@ -68,20 +74,31 @@ public class Gun : MonoBehaviour
         }
         
         lr.enabled = true;
-        lr.SetPosition(1, grapplePoint);
+        lr.SetPosition(1, harpoon.transform.position);
         
     }
 
     private void ExecuteGrapple()
     {
+        // if(grappling)
+        //     return;
+
+        grappling = true;
+
+        rb.simulated = true;
+        rb.AddForce(harpoon.transform.right * force, ForceMode2D.Impulse);
 
     }
 
     private void StopGrapple()
     {
+        if(!grappling)
+            return;
         grappling = false;
 
         grapplingCooldown = 2;
+
+        lr.enabled = false;
 
     }
 }
