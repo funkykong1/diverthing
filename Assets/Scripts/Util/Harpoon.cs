@@ -28,7 +28,7 @@ public class Harpoon : MonoBehaviour
 
     void Start()
     {   
-        timer = 2.5f;
+        timer = 0.5f;
         rb.AddForce(gun.transform.right * gun.force, ForceMode2D.Impulse);
 
         Destroy(gameObject, 5);
@@ -41,9 +41,7 @@ public class Harpoon : MonoBehaviour
 
         if(timer <= 0)
         {
-            //disable embedding and activate a physical box thing
-            capsule.enabled = false;
-            box.enabled = true;
+            DisableHarpoon();
         }
     }
 
@@ -56,5 +54,20 @@ public class Harpoon : MonoBehaviour
             isConnected = true;
             rb.simulated = false;
         }
+    }
+
+    void DisableHarpoon()
+    {
+            //disable embedding and activate a physical box thing
+            capsule.enabled = false;
+            box.enabled = true;
+            //give harpoon a bouncy material along with less friction 
+            rb.sharedMaterial = new PhysicsMaterial2D("HARPOON MATERIAL");
+            rb.sharedMaterial.bounciness = 2;
+            rb.sharedMaterial.friction = -1;
+
+            //give harpoon drag to further simulate water and less velocity and force
+            rb.drag = 2;
+            rb.angularDrag = 1;
     }
 }
