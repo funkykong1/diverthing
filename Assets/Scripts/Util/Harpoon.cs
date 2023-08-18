@@ -7,7 +7,7 @@ public class Harpoon : MonoBehaviour
     public bool isConnected;
     private Gun gun;
     private Rigidbody2D rb;
-    private float timer;
+    public float timer;
 
     private BoxCollider2D box;
     private CapsuleCollider2D capsule;
@@ -28,14 +28,14 @@ public class Harpoon : MonoBehaviour
 
     void Start()
     {   
+        //timer and add force to the thing
         timer = 0.5f;
         rb.AddForce(gun.transform.right * gun.force, ForceMode2D.Impulse);
-
-        Destroy(gameObject, 5);
     }
 
     void Update()
     {
+        //if timer above 0 tick it down
         if(timer > 0)
             timer -= Time.deltaTime;
 
