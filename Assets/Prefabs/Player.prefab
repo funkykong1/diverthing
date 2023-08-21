@@ -112,7 +112,7 @@ MonoBehaviour:
   sprites:
   - {fileID: -1569502907, guid: fe1c11ba2a30df3418e2f8029bc1239d, type: 3}
   - {fileID: 145423256, guid: 78c777264efae3a4fbbde3f3b7ef6f65, type: 3}
-  force: 5
+  force: 6
 --- !u!50 &8982052007218108999
 Rigidbody2D:
   serializedVersion: 4

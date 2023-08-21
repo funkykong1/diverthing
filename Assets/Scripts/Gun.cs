@@ -15,14 +15,14 @@ public class Gun : MonoBehaviour
     public float grapplingCooldown, grappleDelayTime;
 
     
-    public GameObject harpoon;
+    public GameObject harpoonPrefab;
     public Sprite[] sprites;
 
     private bool grappling;
     private LineRenderer lr;
     private SpriteRenderer rend;
-    private GameObject activeHarpoon;
-    public float force;
+    private GameObject harpoon;
+    public float force, currDistance;
 
     void Start()
     {
@@ -40,24 +40,32 @@ public class Gun : MonoBehaviour
         //
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            
             StartGrapple();
+        }
+            
 
         //tick grapple gun timer down
         if(grapplingCooldown >= 0)
             grapplingCooldown -= Time.deltaTime;
 
 
-        if(activeHarpoon != null)
+        if(harpoon != null)
         {
             lr.enabled = true;
-            lr.SetPosition(1, activeHarpoon.transform.position);
+            lr.SetPosition(1, harpoon.transform.position);
+            currDistance = Vector2.Distance(this.transform.position, harpoon.transform.position);
         }
         else
         {
             lr.enabled = false;
         }
 
+        if(currDistance <= 0.3)
+            StopGrapple();
 
+        
     }
 
     void LateUpdate()
@@ -73,48 +81,35 @@ public class Gun : MonoBehaviour
         
         grappling = true;
 
-        RaycastHit2D hit;
-        hit = Physics2D.Raycast((Vector2)barrel.position, (Vector2)barrel.transform.right, maxDistance, LayerMask.GetMask("Ground"));
-        
-        if(hit)
-        {
-            grapplePoint = hit.point;
-
-            Invoke(nameof(ExecuteGrapple), grappleDelayTime);
-        }
-        else
-        {
-            grapplePoint = barrel.position + barrel.right * maxDistance;
-
-            Invoke(nameof(ExecuteGrapple), grappleDelayTime);
-        }
-        
+        Invoke(nameof(ExecuteGrapple), grappleDelayTime);
     }
 
     private void ExecuteGrapple()
     {
-        // if(grappling)
-        //     return;
+        if(grappling)
+            return;
         rend.sprite = sprites[1];
         grappling = true;
-        activeHarpoon = Instantiate(harpoon, barrel.position, Quaternion.identity);
+        harpoon = Instantiate(harpoonPrefab, barrel.position, Quaternion.identity);
 
         lr.enabled = true;
-        lr.SetPosition(1, activeHarpoon.transform.position);
+        lr.SetPosition(1, harpoon.transform.position);
     }
 
+
+    //Grappling hook gun reload here
     private void StopGrapple()
     {
-        if(!grappling)
-            return;
-
-        //WHEN THING REELED IN
         rend.sprite = sprites[0];
+        Destroy(harpoon);
         grappling = false;
-
-        grapplingCooldown = 2;
-
         lr.enabled = false;
+
+    }
+
+    
+    private void ReelIn()
+    {
 
     }
 }

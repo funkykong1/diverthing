@@ -12,6 +12,9 @@ public class Harpoon : MonoBehaviour
     private BoxCollider2D box;
     private CapsuleCollider2D capsule;
 
+    //IF HARPOON FAR AWAY
+    public bool disabled;
+
     void Awake()
     {
         gun = GameObject.Find("Gun").GetComponent<Gun>();
@@ -29,6 +32,7 @@ public class Harpoon : MonoBehaviour
     void Start()
     {   
         //timer and add force to the thing
+        disabled = false;
         timer = 0.5f;
         rb.AddForce(gun.transform.right * gun.force, ForceMode2D.Impulse);
     }
@@ -58,12 +62,13 @@ public class Harpoon : MonoBehaviour
 
     void DisableHarpoon()
     {
+            disabled = true;
             //disable embedding and activate a physical box thing
             capsule.enabled = false;
             box.enabled = true;
             //give harpoon a bouncy material along with less friction 
             rb.sharedMaterial = new PhysicsMaterial2D("HARPOON MATERIAL");
-            rb.sharedMaterial.bounciness = 2;
+            rb.sharedMaterial.bounciness = 5;
             rb.sharedMaterial.friction = -1;
 
             //give harpoon drag to further simulate water and less velocity and force
