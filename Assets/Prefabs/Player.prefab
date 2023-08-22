@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 510284969}
   - component: {fileID: 8982052007218108999}
   - component: {fileID: 5193722799881112155}
+  - component: {fileID: 1524514440}
   m_Layer: 3
   m_Name: Gun
   m_TagString: Untagged
@@ -105,14 +106,15 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
-  maxDistance: 5
-  grapplingCooldown: 0.1
-  grappleDelayTime: 0.1
-  harpoon: {fileID: 1262169575072403656, guid: 2d95899f82dd25c4baf2af18ac31135d, type: 3}
+  harpoonPrefab: {fileID: 1262169575072403656, guid: 2d95899f82dd25c4baf2af18ac31135d, type: 3}
   sprites:
   - {fileID: -1569502907, guid: fe1c11ba2a30df3418e2f8029bc1239d, type: 3}
   - {fileID: 145423256, guid: 78c777264efae3a4fbbde3f3b7ef6f65, type: 3}
+  maxDistance: 5
   force: 6
+  currDistance: 0
+  speed: 0
+  grapplingCooldown: 0.1
 --- !u!50 &8982052007218108999
 Rigidbody2D:
   serializedVersion: 4
@@ -233,6 +235,32 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!61 &1524514440
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510284966}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.032532454, y: 0.01561451}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.44044256, y: 0.15675926}
+  m_EdgeRadius: 0
 --- !u!1 &1406869981
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +309,6 @@ GameObject:
   - component: {fileID: 6909690371834114753}
   - component: {fileID: 4661012019226478969}
   - component: {fileID: 1392453155}
-  - component: {fileID: 1392453163}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -504,25 +531,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0014929422, y: -0.2944568}
-  m_Size: {x: 0.6143841, y: 0.35131457}
-  m_Direction: 1
---- !u!70 &1392453163
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141373718707519}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: c3fcd88bc51fae14db1a2c534202fd3e, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.04567444, y: 0.07753013}
-  m_Size: {x: 0.4101832, y: 0.15970232}
-  m_Direction: 1
+  m_Offset: {x: -0.014066458, y: -0.14809945}
+  m_Size: {x: 0.5093789, y: 0.68890804}
+  m_Direction: 0
 --- !u!1 &4782863937174754177
 GameObject:
   m_ObjectHideFlags: 0

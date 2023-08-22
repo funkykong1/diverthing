@@ -9,25 +9,31 @@ public class Gun : MonoBehaviour
 
     public Transform barrel;
     public LayerMask ground;
-    public float maxDistance = 10f;
     private Vector2 grapplePoint;
 
-    public float grapplingCooldown, grappleDelayTime;
-
-    
+    private GameObject harpoon, player;
     public GameObject harpoonPrefab;
+
     public Sprite[] sprites;
 
     private bool grappling;
+
     private LineRenderer lr;
     private SpriteRenderer rend;
-    private GameObject harpoon;
-    public float force, currDistance;
+
+    public float maxDistance = 10f;
+    public float force, currDistance, speed, grapplingCooldown;
+
+    private Rigidbody2D rb;
 
     void Start()
     {
+        //init
         rend = GetComponent<SpriteRenderer>();
         lr = GetComponent<LineRenderer>();
+        
+        player = GameObject.Find("Player");
+        rb = player.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -41,7 +47,6 @@ public class Gun : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            
             StartGrapple();
         }
             
@@ -50,11 +55,14 @@ public class Gun : MonoBehaviour
         if(grapplingCooldown >= 0)
             grapplingCooldown -= Time.deltaTime;
 
-
+        
         if(harpoon != null)
         {
+            //enable line renderer and apply to harpoon
             lr.enabled = true;
             lr.SetPosition(1, harpoon.transform.position);
+
+            //get distance to harpoon
             currDistance = Vector2.Distance(this.transform.position, harpoon.transform.position);
         }
         else
@@ -62,9 +70,31 @@ public class Gun : MonoBehaviour
             lr.enabled = false;
         }
 
-        if(currDistance <= 0.3)
-            StopGrapple();
+        
+        if(Input.GetKey(KeyCode.Mouse1) && harpoon != null)
+        {
+            //direction to accelerate when rewinding harpoon cord
+            var dir2 = harpoon.transform.position - transform.position;
 
+            //while harpooning, isnt affected by gravity, no need to adjust mass
+            rb.gravityScale = 0.001f;
+
+            //linear drag prevents obscene speeds from far away tethers
+            rb.drag = currDistance / 1f;
+
+            //apply multipliers for smoother use
+            var dir3 = new Vector2(dir2.x*1.5f, dir2.y/1.5f);
+
+            //add force towards harpoon
+            rb.AddForce((Vector2)dir3 * speed, ForceMode2D.Force);
+        }
+
+        if(Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            //restore ordinary values when not reeling
+            rb.drag = 1;
+            rb.gravityScale = 0.5f;
+        }
         
     }
 
@@ -76,12 +106,10 @@ public class Gun : MonoBehaviour
 
     void StartGrapple()
     {
-        if(grapplingCooldown > 0)
+        if(grappling)
             return;
-        
-        grappling = true;
 
-        Invoke(nameof(ExecuteGrapple), grappleDelayTime);
+        Invoke(nameof(ExecuteGrapple), 0);
     }
 
     private void ExecuteGrapple()
@@ -110,6 +138,10 @@ public class Gun : MonoBehaviour
     
     private void ReelIn()
     {
+        if(harpoon == null)
+            return;
+        // Rigidbody2D rb = harpoon.GetComponent<Rigidbody2D>();
+        // rb.bodyType = RigidbodyType2D.Dynamic;
 
     }
 }

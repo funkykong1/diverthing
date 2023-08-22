@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isConnected: 0
+  timer: 0
+  disabled: 0
 --- !u!61 &5361317976460573065
 BoxCollider2D:
   m_ObjectHideFlags: 0

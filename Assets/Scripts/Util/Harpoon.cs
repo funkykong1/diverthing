@@ -12,8 +12,7 @@ public class Harpoon : MonoBehaviour
     private BoxCollider2D box;
     private CapsuleCollider2D capsule;
 
-    //IF HARPOON FAR AWAY
-    public bool disabled;
+
 
     void Awake()
     {
@@ -32,7 +31,6 @@ public class Harpoon : MonoBehaviour
     void Start()
     {   
         //timer and add force to the thing
-        disabled = false;
         timer = 0.5f;
         rb.AddForce(gun.transform.right * gun.force, ForceMode2D.Impulse);
     }
@@ -40,7 +38,7 @@ public class Harpoon : MonoBehaviour
     void Update()
     {
         //if timer above 0 tick it down
-        if(timer > 0)
+        if(timer > 0 && !isConnected)
             timer -= Time.deltaTime;
 
         if(timer <= 0)
@@ -55,14 +53,15 @@ public class Harpoon : MonoBehaviour
         if(other.CompareTag("Ground") && timer >= 0)
         {
             //if recently launched and hits ground, latch on
+            timer = 0;
             isConnected = true;
-            rb.simulated = false;
+            rb.bodyType = RigidbodyType2D.Static;
+
         }
     }
 
     void DisableHarpoon()
     {
-            disabled = true;
             //disable embedding and activate a physical box thing
             capsule.enabled = false;
             box.enabled = true;
