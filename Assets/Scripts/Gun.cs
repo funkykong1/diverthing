@@ -21,7 +21,6 @@ public class Gun : MonoBehaviour
     private LineRenderer lr;
     private SpriteRenderer rend;
 
-    public float maxDistance = 10f;
     public float force, currDistance, speed, grapplingCooldown;
 
     private Rigidbody2D rb;
@@ -90,6 +89,9 @@ public class Gun : MonoBehaviour
             rb.drag = 1;
             rb.gravityScale = 0.5f;
         }
+
+        if(currDistance >= 8)
+            Release();
         
     }
 

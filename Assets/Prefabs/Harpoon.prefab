@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1262169575072403659}
   - component: {fileID: 1262169575072403653}
   - component: {fileID: 1262169575072403652}
-  - component: {fileID: 2973027018147601085}
   - component: {fileID: 7995845782220827360}
+  - component: {fileID: 4082841160286984938}
   m_Layer: 3
   m_Name: Harpoon
   m_TagString: Untagged
@@ -123,22 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounded: 0
   timer: 0
---- !u!70 &2973027018147601085
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262169575072403656}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.23220289, y: 0.015614836}
-  m_Size: {x: 0.03372765, y: 0.016665785}
-  m_Direction: 1
 --- !u!70 &7995845782220827360
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -155,3 +139,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0.08342342, y: 0.016225707}
   m_Size: {x: 0.47052032, y: 0.029681113}
   m_Direction: 1
+--- !u!58 &4082841160286984938
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262169575072403656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.23606366, y: 0.017039418}
+  serializedVersion: 2
+  m_Radius: 0.017125614

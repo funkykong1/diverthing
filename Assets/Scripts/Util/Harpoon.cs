@@ -9,7 +9,7 @@ public class Harpoon : MonoBehaviour
     private Rigidbody2D rb;
     public float timer;
 
-    private BoxCollider2D box;
+    private CircleCollider2D circle;
     private CapsuleCollider2D capsule;
 
 
@@ -17,12 +17,12 @@ public class Harpoon : MonoBehaviour
     void Awake()
     {
         gun = GameObject.Find("Gun").GetComponent<Gun>();
-        box = GetComponent<BoxCollider2D>();
+        circle = GetComponent<CircleCollider2D>();
         capsule = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
 
-        box.enabled = false;
-        capsule.enabled = true;
+        circle.enabled = true;
+        capsule.enabled = false;
 
         this.transform.rotation = gun.transform.rotation;
 
@@ -63,11 +63,11 @@ public class Harpoon : MonoBehaviour
 
     public void DisableHarpoon()
     {
-            //disable embedding and activate a physical box thing
+            //disable embedding and activate a physical caps thing
             rb.bodyType = RigidbodyType2D.Dynamic;
             grounded = false;
-            capsule.enabled = false;
-            box.enabled = true;
+            capsule.enabled = true;
+            circle.enabled = false;
             //give harpoon a bouncy material along with less friction 
             rb.sharedMaterial = new PhysicsMaterial2D("HARPOON MATERIAL");
             rb.sharedMaterial.bounciness = 10;

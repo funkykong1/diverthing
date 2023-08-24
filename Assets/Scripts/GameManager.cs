@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     //current treasure prefab in play
     private GameObject currentSet, currentEnemies, titleScreen, gameOverScreen;
 
-
+    public GameObject player;
     //idk
     static GameManager instance;
 
@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
         SpawnTreasures();
         SpawnEnemies();
         titleScreen.gameObject.SetActive(false);
+        Instantiate(player, GameObject.Find("Drill").transform.position, Quaternion.identity);
+        
     }
 
     public void GameOver()
