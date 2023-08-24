@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Harpoon : MonoBehaviour
 {
-    public bool isConnected;
+    public bool grounded;
     private Gun gun;
     private Rigidbody2D rb;
     public float timer;
@@ -33,15 +33,16 @@ public class Harpoon : MonoBehaviour
         //timer and add force to the thing
         timer = 0.5f;
         rb.AddForce(gun.transform.right * gun.force, ForceMode2D.Impulse);
+        Physics2D.IgnoreLayerCollision(3,3, true);
     }
 
     void Update()
     {
         //if timer above 0 tick it down
-        if(timer > 0 && !isConnected)
+        if(timer > 0 && !grounded)
             timer -= Time.deltaTime;
 
-        if(timer <= 0)
+        if(timer <= 0 && !grounded)
         {
             DisableHarpoon();
         }
@@ -53,21 +54,23 @@ public class Harpoon : MonoBehaviour
         if(other.CompareTag("Ground") && timer >= 0)
         {
             //if recently launched and hits ground, latch on
-            timer = 0;
-            isConnected = true;
+            grounded = true;
             rb.bodyType = RigidbodyType2D.Static;
+            timer = 0;
 
         }
     }
 
-    void DisableHarpoon()
+    public void DisableHarpoon()
     {
             //disable embedding and activate a physical box thing
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            grounded = false;
             capsule.enabled = false;
             box.enabled = true;
             //give harpoon a bouncy material along with less friction 
             rb.sharedMaterial = new PhysicsMaterial2D("HARPOON MATERIAL");
-            rb.sharedMaterial.bounciness = 5;
+            rb.sharedMaterial.bounciness = 10;
             rb.sharedMaterial.friction = -1;
 
             //give harpoon drag to further simulate water and less velocity and force
