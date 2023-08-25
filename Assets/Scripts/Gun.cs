@@ -54,6 +54,12 @@ public class Gun : MonoBehaviour
             //restore ordinary values when not Releaseg
             rb.drag = 1;
             rb.gravityScale = 0.5f;
+            //RESTORRE HARPOON VALUE TOO
+            if (harpoon != null)
+            {
+                harpoon.GetComponent<Rigidbody2D>().gravityScale = 0.5f;
+            }
+            
         }
 
         
@@ -170,14 +176,17 @@ public class Gun : MonoBehaviour
     //reel harpoon towards player
     private void Retrieve()
     {
+        Rigidbody2D rb = harpoon.GetComponent<Rigidbody2D>();
         //direction to accelerate when rewinding harpoon cord
         var dir2 = transform.position - harpoon.transform.position;
 
         //alter harpoon mass to reduce speed
-        harpoon.GetComponent<Rigidbody2D>().mass = currDistance/3;
+        rb.drag = currDistance/3;
+
+        rb.gravityScale = 0.0001f;
 
         //add force into harpoon 
-        harpoon.GetComponent<Rigidbody2D>().AddForce((Vector2)dir2*speed/2, ForceMode2D.Force);
+        rb.AddForce((Vector2)dir2*speed/4, ForceMode2D.Force);
 
         //if harpoon close enough, reload 
         if(currDistance <= 0.4f)
