@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         SpawnTreasures();
         SpawnEnemies();
         titleScreen.gameObject.SetActive(false);
-        Instantiate(player, GameObject.Find("Drill").transform.position, Quaternion.identity);
+        //Instantiate(player, GameObject.Find("Drill").transform.position, Quaternion.identity);
         
     }
 

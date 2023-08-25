@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  target: {fileID: 0}
+  target: {fileID: 1323925947005071461, guid: 9a5d979d9298ac54aabbe0a282cb7a67, type: 3}
 --- !u!212 &525013422540129791
 SpriteRenderer:
   m_ObjectHideFlags: 0
