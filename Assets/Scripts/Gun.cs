@@ -59,8 +59,9 @@ public class Gun : MonoBehaviour
             {
                 harpoon.GetComponent<Rigidbody2D>().gravityScale = 0.5f;
             }
-            
         }
+
+        
 
         
     }
@@ -83,6 +84,13 @@ public class Gun : MonoBehaviour
 
             //get distance to harpoon
             currDistance = Vector2.Distance(this.transform.position, harpoon.transform.position);
+
+            if(harpoon.GetComponent<Harpoon>().grounded)
+                rend.sprite = sprites[1];
+            else
+                rend.sprite = sprites[2];
+                
+            
         }
 
         else
@@ -127,7 +135,6 @@ public class Gun : MonoBehaviour
     {
         if(grappling)
             return;
-        rend.sprite = sprites[1];
         grappling = true;
         harpoon = Instantiate(harpoonPrefab, barrel.position, Quaternion.identity);
 
@@ -180,16 +187,21 @@ public class Gun : MonoBehaviour
         //direction to accelerate when rewinding harpoon cord
         var dir2 = transform.position - harpoon.transform.position;
 
-        //alter harpoon mass to reduce speed
-        rb.drag = currDistance/3;
-
         rb.gravityScale = 0.0001f;
 
         //add force into harpoon 
-        rb.AddForce((Vector2)dir2*speed/4, ForceMode2D.Force);
+        rb.AddForce((Vector2)dir2*speed/3, ForceMode2D.Force);
+
+
+        //add drag when closer so it doesnt fling everywhere
+        if(currDistance <= 3)
+            rb.drag = 4;
+        else
+            //alter harpoon drag to reduce speed
+            rb.drag = currDistance/3;
 
         //if harpoon close enough, reload 
-        if(currDistance <= 0.4f)
+        if(currDistance <= 0.5f)
             StopGrapple();
     }   
 }
