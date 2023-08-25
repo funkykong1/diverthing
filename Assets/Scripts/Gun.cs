@@ -38,11 +38,6 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //POINT AT MOUSE
-        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + angleOffset;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        //
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -53,13 +48,27 @@ public class Gun : MonoBehaviour
 
 
         }
-            
 
-        //tick grapple gun timer down
-        if(grapplingCooldown >= 0)
-            grapplingCooldown -= Time.deltaTime;
+        if(Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            //restore ordinary values when not Releaseg
+            rb.drag = 1;
+            rb.gravityScale = 0.5f;
+        }
 
         
+    }
+
+
+    //fixedupdate ignores fps drops
+    void FixedUpdate()
+    {
+
+        //POINT AT MOUSE
+        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + angleOffset;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //
         if(harpoon != null)
         {
             //enable line renderer and apply to harpoon
@@ -69,10 +78,16 @@ public class Gun : MonoBehaviour
             //get distance to harpoon
             currDistance = Vector2.Distance(this.transform.position, harpoon.transform.position);
         }
+
         else
         {
             lr.enabled = false;
         }
+
+        //tick grapple gun timer down
+        if(grapplingCooldown >= 0)
+            grapplingCooldown -= Time.deltaTime;
+
 
         //handles how player interacts with the harpoon
         if(Input.GetKey(KeyCode.Mouse1) && harpoon != null)
@@ -83,16 +98,9 @@ public class Gun : MonoBehaviour
                 Retrieve();
         }
 
-        if(Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            //restore ordinary values when not Releaseg
-            rb.drag = 1;
-            rb.gravityScale = 0.5f;
-        }
 
         if(currDistance >= 8)
             Release();
-        
     }
 
     void LateUpdate()
@@ -155,7 +163,7 @@ public class Gun : MonoBehaviour
         var dir3 = new Vector2(dir2.x*1.2f, dir2.y/1.5f);
 
         //add force towards harpoon
-        rb.AddForce((Vector2)dir3 * speed, ForceMode2D.Force);
+        rb.AddForce(dir3 * speed, ForceMode2D.Force);
     }
 
 
@@ -169,7 +177,7 @@ public class Gun : MonoBehaviour
         harpoon.GetComponent<Rigidbody2D>().mass = currDistance/3;
 
         //add force into harpoon 
-        harpoon.GetComponent<Rigidbody2D>().AddForce((Vector2)dir2, ForceMode2D.Force);
+        harpoon.GetComponent<Rigidbody2D>().AddForce((Vector2)dir2*speed/2, ForceMode2D.Force);
 
         //if harpoon close enough, reload 
         if(currDistance <= 0.4f)
