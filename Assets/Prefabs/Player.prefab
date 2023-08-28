@@ -108,12 +108,13 @@ MonoBehaviour:
     m_Bits: 64
   harpoonPrefab: {fileID: 1262169575072403656, guid: 2d95899f82dd25c4baf2af18ac31135d, type: 3}
   sprites:
-  - {fileID: -1569502907, guid: fe1c11ba2a30df3418e2f8029bc1239d, type: 3}
-  - {fileID: 145423256, guid: 78c777264efae3a4fbbde3f3b7ef6f65, type: 3}
-  force: 6
+  - {fileID: -1330806253, guid: 97987477a009ab6409b02ad14c41b8b3, type: 3}
+  - {fileID: -1029495098, guid: 97987477a009ab6409b02ad14c41b8b3, type: 3}
+  - {fileID: 812238546, guid: 97987477a009ab6409b02ad14c41b8b3, type: 3}
+  force: 7
   currDistance: 0
-  speed: 30
-  grapplingCooldown: 0.1
+  speed: 40
+  reelSpeed: 0
 --- !u!50 &8982052007218108999
 Rigidbody2D:
   serializedVersion: 4

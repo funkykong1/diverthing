@@ -23,7 +23,7 @@ public class Gun : MonoBehaviour
 
     //Force is gun strength, speed is how fast player moves via grapple
     //reel speed is how fast harpoon gets reeled in
-    public float force, currDistance, speed ,reelSpeed, grapplingCooldown;
+    public float force, currDistance, speed ,reelSpeed;
     private bool forceReturn;
     private Rigidbody2D rb;
 
@@ -110,11 +110,6 @@ public class Gun : MonoBehaviour
         {
             lr.enabled = false;
         }
-
-        //tick grapple gun timer down
-        if(grapplingCooldown >= 0)
-            grapplingCooldown -= Time.deltaTime;
-
 
         //handles how player interacts with the harpoon
         if(Input.GetKey(KeyCode.Mouse1) && harpoon != null)
