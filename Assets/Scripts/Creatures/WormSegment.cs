@@ -10,6 +10,11 @@ public class WormSegment : MonoBehaviour
     void Start()
     {
         worm = GetComponentInParent<Worm>();
+
+        //ignore collisions with ground and other creatures (and the worm itself)
+        Physics2D.IgnoreLayerCollision(6, 8, true);
+        Physics2D.IgnoreLayerCollision(7, 8, true);
+        Physics2D.IgnoreLayerCollision(8, 8, true);
     }
 
     void OnTriggerEnter2D(Collider2D other)

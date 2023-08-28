@@ -195,7 +195,7 @@ public class Gun : MonoBehaviour
 
         //add drag when closer so it doesnt fling everywhere
         if(currDistance <= 3)
-            rb.drag = 3;
+            rb.drag = currDistance/1.7f;
         else
             //alter harpoon drag to reduce speed
             rb.drag = currDistance/3;

@@ -117,7 +117,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634592384223749971}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 3601473743353916951}
@@ -130,10 +130,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 1
     m_MaximumMotorForce: 10
-  m_UseLimits: 1
+  m_UseLimits: 0
   m_AngleLimits:
-    m_LowerAngle: 30
-    m_UpperAngle: -30
+    m_LowerAngle: 40
+    m_UpperAngle: -40
 --- !u!254 &8300810280015480429
 RelativeJoint2D:
   m_ObjectHideFlags: 0
@@ -147,9 +147,9 @@ RelativeJoint2D:
   m_ConnectedRigidBody: {fileID: 3601473743353916951}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_MaxForce: 0
-  m_MaxTorque: 1
-  m_CorrectionScale: 0.7
+  m_MaxForce: 1
+  m_MaxTorque: 2
+  m_CorrectionScale: 0.2
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0.5}
   m_AngularOffset: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543715360612041857}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
@@ -349,12 +349,12 @@ MonoBehaviour:
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
-  rotationSpeed: 360
+  rotationSpeed: 180
   slowdownDistance: 0
   pickNextWaypointDist: 1
-  endReachedDistance: 0.2
+  endReachedDistance: 1
   alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 0
+  slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
 --- !u!50 &1284820528867054432
@@ -539,7 +539,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543715361039089707}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1284820529414476554}
@@ -552,7 +552,7 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 1
     m_MaximumMotorForce: 10
-  m_UseLimits: 1
+  m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 50
     m_UpperAngle: -50
@@ -569,9 +569,9 @@ RelativeJoint2D:
   m_ConnectedRigidBody: {fileID: 1284820529414476554}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_MaxForce: 0
-  m_MaxTorque: 1
-  m_CorrectionScale: 0.3
+  m_MaxForce: 1
+  m_MaxTorque: 2
+  m_CorrectionScale: 0.2
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0.5}
   m_AngularOffset: 0
@@ -720,7 +720,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543715361358563007}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1284820529669606016}
@@ -733,7 +733,7 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 1
     m_MaximumMotorForce: 10
-  m_UseLimits: 1
+  m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 40
     m_UpperAngle: -40
@@ -750,9 +750,9 @@ RelativeJoint2D:
   m_ConnectedRigidBody: {fileID: 1284820529669606016}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_MaxForce: 0
-  m_MaxTorque: 1
-  m_CorrectionScale: 0.7
+  m_MaxForce: 1
+  m_MaxTorque: 2
+  m_CorrectionScale: 0.2
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0.5}
   m_AngularOffset: 0
@@ -901,7 +901,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543715361587098908}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1284820528867054432}
@@ -914,7 +914,7 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 1
     m_MaximumMotorForce: 10
-  m_UseLimits: 1
+  m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 60
     m_UpperAngle: -60
@@ -931,9 +931,9 @@ RelativeJoint2D:
   m_ConnectedRigidBody: {fileID: 1284820528867054432}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_MaxForce: 0
-  m_MaxTorque: 1
-  m_CorrectionScale: 0.3
+  m_MaxForce: 1
+  m_MaxTorque: 2
+  m_CorrectionScale: 0.2
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0.6899996}
   m_AngularOffset: 0
@@ -1082,7 +1082,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543715362354085177}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1095393913082041581}
@@ -1095,10 +1095,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 1
     m_MaximumMotorForce: 10
-  m_UseLimits: 1
+  m_UseLimits: 0
   m_AngleLimits:
-    m_LowerAngle: 20
-    m_UpperAngle: -20
+    m_LowerAngle: 40
+    m_UpperAngle: -40
 --- !u!254 &8005422560629535737
 RelativeJoint2D:
   m_ObjectHideFlags: 0
@@ -1112,9 +1112,9 @@ RelativeJoint2D:
   m_ConnectedRigidBody: {fileID: 1095393913082041581}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_MaxForce: 0
-  m_MaxTorque: 1
-  m_CorrectionScale: 0.7
+  m_MaxForce: 1
+  m_MaxTorque: 2
+  m_CorrectionScale: 0.2
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0.4300003}
   m_AngularOffset: -0
@@ -1263,7 +1263,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739712726739873200}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 7366075764673164740}
@@ -1276,10 +1276,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 1
     m_MaximumMotorForce: 10
-  m_UseLimits: 1
+  m_UseLimits: 0
   m_AngleLimits:
-    m_LowerAngle: 30
-    m_UpperAngle: -30
+    m_LowerAngle: 40
+    m_UpperAngle: -40
 --- !u!254 &8498969342277754665
 RelativeJoint2D:
   m_ObjectHideFlags: 0
@@ -1293,9 +1293,9 @@ RelativeJoint2D:
   m_ConnectedRigidBody: {fileID: 7366075764673164740}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_MaxForce: 0
-  m_MaxTorque: 1
-  m_CorrectionScale: 0.7
+  m_MaxForce: 1
+  m_MaxTorque: 2
+  m_CorrectionScale: 0.2
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0.5}
   m_AngularOffset: 0
@@ -1444,7 +1444,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5004708176963798691}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 6031254084971512373}
@@ -1457,10 +1457,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 1
     m_MaximumMotorForce: 10
-  m_UseLimits: 1
+  m_UseLimits: 0
   m_AngleLimits:
-    m_LowerAngle: 30
-    m_UpperAngle: -30
+    m_LowerAngle: 40
+    m_UpperAngle: -40
 --- !u!254 &6015755657696535029
 RelativeJoint2D:
   m_ObjectHideFlags: 0
@@ -1474,9 +1474,9 @@ RelativeJoint2D:
   m_ConnectedRigidBody: {fileID: 6031254084971512373}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_MaxForce: 0
-  m_MaxTorque: 1
-  m_CorrectionScale: 0.7
+  m_MaxForce: 1
+  m_MaxTorque: 2
+  m_CorrectionScale: 0.2
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0.5}
   m_AngularOffset: 0
@@ -1625,7 +1625,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5420899047426878868}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1284820528691309089}
@@ -1638,7 +1638,7 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 1
     m_MaximumMotorForce: 10
-  m_UseLimits: 1
+  m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 30
     m_UpperAngle: -30
@@ -1655,9 +1655,9 @@ RelativeJoint2D:
   m_ConnectedRigidBody: {fileID: 1284820528691309089}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_MaxForce: 0
-  m_MaxTorque: 1
-  m_CorrectionScale: 0.7
+  m_MaxForce: 1
+  m_MaxTorque: 2
+  m_CorrectionScale: 0.2
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0.5}
   m_AngularOffset: 0
@@ -1806,7 +1806,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6423253585729036357}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1284820528707898845}
@@ -1819,7 +1819,7 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 1
     m_MaximumMotorForce: 10
-  m_UseLimits: 1
+  m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 30
     m_UpperAngle: -30
@@ -1836,9 +1836,9 @@ RelativeJoint2D:
   m_ConnectedRigidBody: {fileID: 1284820528707898845}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_MaxForce: 0
-  m_MaxTorque: 1
-  m_CorrectionScale: 0.7
+  m_MaxForce: 1
+  m_MaxTorque: 2
+  m_CorrectionScale: 0.2
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0.5}
   m_AngularOffset: 0
@@ -1987,7 +1987,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8919314067881186581}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 190573080453837830}
@@ -2000,10 +2000,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 1
     m_MaximumMotorForce: 10
-  m_UseLimits: 1
+  m_UseLimits: 0
   m_AngleLimits:
-    m_LowerAngle: 30
-    m_UpperAngle: -30
+    m_LowerAngle: 40
+    m_UpperAngle: -40
 --- !u!254 &4920335610607595664
 RelativeJoint2D:
   m_ObjectHideFlags: 0
@@ -2017,9 +2017,9 @@ RelativeJoint2D:
   m_ConnectedRigidBody: {fileID: 190573080453837830}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_MaxForce: 0
-  m_MaxTorque: 1
-  m_CorrectionScale: 0.7
+  m_MaxForce: 1
+  m_MaxTorque: 2
+  m_CorrectionScale: 0.2
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0.5}
   m_AngularOffset: 0
