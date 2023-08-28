@@ -6,6 +6,7 @@ public class CameraScript : MonoBehaviour
 {
 
     public Transform plr;
+    
 
     // Update is called once per frame
     void Update()

@@ -21,9 +21,12 @@ public class Gun : MonoBehaviour
     private LineRenderer lr;
     private SpriteRenderer rend;
 
-    public float force, currDistance, speed, grapplingCooldown;
-
+    //Force is gun strength, speed is how fast player moves via grapple
+    //reel speed is how fast harpoon gets reeled in
+    public float force, currDistance, speed ,reelSpeed, grapplingCooldown;
+    private bool forceReturn;
     private Rigidbody2D rb;
+
 
     void Start()
     {
@@ -75,7 +78,9 @@ public class Gun : MonoBehaviour
         var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + angleOffset;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        //
+
+
+        //IF HARPOON EXISTS, DO THESE
         if(harpoon != null)
         {
             //enable line renderer and apply to harpoon
@@ -90,6 +95,14 @@ public class Gun : MonoBehaviour
             else
                 rend.sprite = sprites[2];
                 
+
+            if(currDistance > 15)
+                forceReturn = true;
+
+            if(forceReturn)
+            {
+                ForceReturn();
+            }
             
         }
 
@@ -150,7 +163,7 @@ public class Gun : MonoBehaviour
         Destroy(harpoon);
         grappling = false;
         lr.enabled = false;
-
+        forceReturn = false;
     }
 
     //release harpoon from the ground
@@ -183,26 +196,44 @@ public class Gun : MonoBehaviour
     //reel harpoon towards player
     private void Retrieve()
     {
-        Rigidbody2D rb = harpoon.GetComponent<Rigidbody2D>();
+        Rigidbody2D rbh = harpoon.GetComponent<Rigidbody2D>();
         //direction to accelerate when rewinding harpoon cord
         var dir2 = transform.position - harpoon.transform.position;
 
-        rb.gravityScale = 0.0001f;
-
-        //add force into harpoon 
-        rb.AddForce((Vector2)dir2*speed/3, ForceMode2D.Force);
+        rbh.gravityScale = 0.0001f;
 
 
-        //add drag when closer so it doesnt fling everywhere
-        if(currDistance <= 3)
-            rb.drag = currDistance/1.7f;
+        //incrementally add or remove harpoon speed
+        //harpoon is extremely close, apply more speed
+        if(currDistance <= 2)
+            reelSpeed = 10;
+
+        else if(currDistance <= 4)
+            //harpoon is semi close, lessen speed
+            reelSpeed = 6;
         else
-            //alter harpoon drag to reduce speed
-            rb.drag = currDistance/3;
+            //harpoon is far away, reduce speed, dir2 will be huge at this point anyway
+            reelSpeed = 5;
+            
+        //add force into harpoon 
+        rbh.AddForce((Vector2)dir2*reelSpeed, ForceMode2D.Force);
 
         //if harpoon close enough, reload 
         if(currDistance <= 0.5f)
             StopGrapple();
+
     }   
+
+    //if distance grows too large, force harpoon to return to prevent softlocking
+    private void ForceReturn()
+    {
+        if(!forceReturn)
+            return;
+        else
+            Retrieve();
+
+        harpoon.GetComponent<CapsuleCollider2D>().isTrigger = true;
+        
+    }
 }
 
