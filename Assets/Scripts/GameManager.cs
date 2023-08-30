@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
 
     //current treasure prefab in play
-    private GameObject currentSet, currentEnemies, titleScreen, gameOverScreen;
+    private GameObject currentSet, currentEnemies, titleScreen, gameOverScreen, guide;
 
     public GameObject player;
     //idk
@@ -34,20 +34,28 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //no need for publics cluttering gamemanager
+        guide = GameObject.Find("Guide Canvas");
         titleScreen = GameObject.Find("Title Screen");
         gameOverScreen = GameObject.Find("Game Over Screen");
         gameOverScreen.gameObject.SetActive(false);
+        guide.SetActive(false);
+        player.SetActive(false);
     }
 
 
     public void StartGame()
     {
+        player.SetActive(true);
         isGameActive = true;
         SpawnTreasures();
         SpawnEnemies();
         titleScreen.gameObject.SetActive(false);
         //Instantiate(player, GameObject.Find("Drill").transform.position, Quaternion.identity);
-        
+    }
+
+    public void StartSurvival()
+    {
+        SceneManager.LoadScene("Survival", LoadSceneMode.Single);
     }
 
     public void GameOver()
@@ -98,6 +106,20 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ToggleGuide()
+    {
+        if(guide.activeInHierarchy)
+        {
+            titleScreen.SetActive(true);
+            guide.SetActive(false);
+        }
+        else
+        {
+            titleScreen.SetActive(false);
+            guide.SetActive(true);
+        }
     }
 }
 
