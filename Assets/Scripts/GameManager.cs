@@ -17,11 +17,11 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
 
     //current treasure prefab in play
-    private GameObject currentSet, currentEnemies, titleScreen, gameOverScreen, guide;
+    private GameObject currentSet, currentEnemies, titleScreen, gameOverScreen, guide, gameScreen;
 
     public GameObject player;
     //idk
-    static GameManager instance;
+    public static GameManager instance;
 
     private void Awake()
     {
@@ -34,12 +34,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //no need for publics cluttering gamemanager
+        gameScreen = GameObject.Find("Game Screen");
         guide = GameObject.Find("Guide Canvas");
         titleScreen = GameObject.Find("Title Screen");
         gameOverScreen = GameObject.Find("Game Over Screen");
         gameOverScreen.gameObject.SetActive(false);
         guide.SetActive(false);
         player.SetActive(false);
+        gameScreen.SetActive(false);
     }
 
 
