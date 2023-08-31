@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private GameObject currentSet, currentEnemies, titleScreen, gameOverScreen, guide, gameScreen;
 
     public GameObject player;
-    //idk
+
     public static GameManager instance;
 
     private void Awake()
@@ -34,10 +34,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //no need for publics cluttering gamemanager
-        gameScreen = GameObject.Find("Game Screen");
+        gameScreen = GameObject.Find("Ingame Canvas");
         guide = GameObject.Find("Guide Canvas");
-        titleScreen = GameObject.Find("Title Screen");
-        gameOverScreen = GameObject.Find("Game Over Screen");
+        titleScreen = GameObject.Find("Menu Canvas");
+        gameOverScreen = GameObject.Find("Game Over Canvas");
         gameOverScreen.gameObject.SetActive(false);
         guide.SetActive(false);
         player.SetActive(false);

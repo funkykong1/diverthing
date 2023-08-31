@@ -6,6 +6,7 @@ public class pickup : MonoBehaviour
 {
 public void DestroyThis()
     {
+        //animation event for removing pickup sparkle
         Destroy(gameObject);
     }
 }
