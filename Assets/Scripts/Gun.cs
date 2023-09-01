@@ -119,10 +119,6 @@ public class Gun : MonoBehaviour
             else
                 Retrieve();
         }
-
-
-        if(currDistance >= 8)
-            Release();
     }
 
     void LateUpdate()
@@ -225,9 +221,13 @@ public class Gun : MonoBehaviour
         if(!forceReturn)
             return;
         else
+        {
             Retrieve();
+            Release();
+        }
+            
 
-        harpoon.GetComponent<CapsuleCollider2D>().isTrigger = true;
+        harpoon.GetComponent<CapsuleCollider2D>().enabled = false;
         
     }
 }

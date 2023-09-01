@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
-
+        leaveText = GameObject.Find("Leave Text");
         
     }
 
@@ -37,7 +37,6 @@ public class UIManager : MonoBehaviour
         
         instance.goalUI.sprite = instance.scoreSprites[goal];
 
-        leaveText = GameObject.Find("Leave Text");
         leaveText.gameObject.SetActive(false);
     }
 

@@ -6,9 +6,11 @@ public class Drill : MonoBehaviour
 {
 
     private UIManager uiManager;
+    private GameManager gameManager;
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
     }
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class Drill : MonoBehaviour
         {
             //TODO gamemanager win
             Debug.Log("Voitit pelin :D");
+            gameManager.RestartGame();
         }
     }
 }

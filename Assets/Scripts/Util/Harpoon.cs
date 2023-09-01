@@ -55,6 +55,7 @@ public class Harpoon : MonoBehaviour
         {
             //if recently launched and hits ground, latch on
             grounded = true;
+            circle.enabled = false;
             rb.bodyType = RigidbodyType2D.Static;
             timer = 0;
 
@@ -63,7 +64,7 @@ public class Harpoon : MonoBehaviour
 
     public void DisableHarpoon()
     {
-            //disable embedding and activate a physical caps thing
+            //disable embedding and activate a physical capsule thing
             rb.bodyType = RigidbodyType2D.Dynamic;
             grounded = false;
             capsule.enabled = true;

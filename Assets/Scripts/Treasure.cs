@@ -34,4 +34,7 @@ public class Treasure : MonoBehaviour
         Instantiate(pickup, pickupspot.position, Quaternion.identity);
         Destroy(gameObject);
     }
+
+
+    
 }
