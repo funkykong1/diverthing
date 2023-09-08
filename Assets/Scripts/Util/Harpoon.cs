@@ -64,6 +64,7 @@ public class Harpoon : MonoBehaviour
 
     public void DisableHarpoon()
     {
+        this.tag = default;
             //disable embedding and activate a physical capsule thing
             rb.bodyType = RigidbodyType2D.Dynamic;
             grounded = false;

@@ -8,6 +8,7 @@ TagManager:
   - Point
   - Enemy
   - Ground
+  - Harpoon
   layers:
   - Default
   - TransparentFX
