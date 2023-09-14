@@ -58,8 +58,8 @@ public class Crawler : MonoBehaviour
         //     }
 
         //Debug.DrawRay(transform.position, Vector2.down);
-        if(Input.GetKeyDown(KeyCode.Space))
-            StartCoroutine(RotateDown());
+        // if(Input.GetKeyDown(KeyCode.Space))
+        //     StartCoroutine(RotateDown());
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -82,15 +82,15 @@ public class Crawler : MonoBehaviour
 
     }
 
-    public IEnumerator RotateDown()
-    {
-        rotating = true;
+    // public IEnumerator RotateDown()
+    // {
+    //     rotating = true;
 
-        Vector3 rotation = new Vector3(0,0,-90);
-        transform.Rotate(rotation * Time.deltaTime * rotatingSpeed);
+    //     Vector3 rotation = new Vector3(0,0,-90);
+    //     transform.Rotate(rotation * Time.deltaTime * rotatingSpeed);
 
-        yield return new WaitUntil(()=>);+
-    }
+    //     //yield return new WaitUntil(() => );+
+    // }
 
 
     //ROTATE UP A CORNER

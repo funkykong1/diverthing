@@ -28,10 +28,10 @@ public class Sensor : MonoBehaviour
             StartCoroutine(parent.RotateUp());
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.CompareTag("Ground"))
-            parent.RotateDown();
-    }
+    // void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if(other.CompareTag("Ground"))
+    //         parent.RotateDown();
+    // }
 
 }
