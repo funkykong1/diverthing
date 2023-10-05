@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         titleScreen = GameObject.Find("Menu Canvas");
         gameOverScreen = GameObject.Find("Game Over Canvas");
         gameOverScreen.gameObject.SetActive(false);
-        guide.SetActive(false);
+        //guide.SetActive(false);
         player.SetActive(false);
         gameScreen.SetActive(false);
     }

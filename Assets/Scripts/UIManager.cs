@@ -53,14 +53,13 @@ public class UIManager : MonoBehaviour
 
     public static void UpdateScore (int s)
     {
-        //only update scoretext if it isnt equal to goal
-        if (instance.score != instance.goal)
-        {
-            instance.score += s;
+        //update scoretext
+        instance.score += s;
+        if(instance.scoreSprites[instance.score] != null)
             instance.scoreUI.sprite = instance.scoreSprites[instance.score];
-        }
+        
 
-        //if sufficient goodies collected, leave
+        //if sufficient goodies collected, let player escape
         if (instance.score == instance.goal)
         {
             GameManager.Escape();
