@@ -64,19 +64,18 @@ public class Harpoon : MonoBehaviour
 
     public void DisableHarpoon()
     {
-        this.tag = default;
-            //disable embedding and activate a physical capsule thing
-            rb.bodyType = RigidbodyType2D.Dynamic;
-            grounded = false;
-            capsule.enabled = true;
-            circle.enabled = false;
-            //give harpoon a bouncy material along with less friction 
-            rb.sharedMaterial = new PhysicsMaterial2D("HARPOON MATERIAL");
-            rb.sharedMaterial.bounciness = 10;
-            rb.sharedMaterial.friction = -1;
+        //disable embedding and activate a physical capsule thing
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        grounded = false;
+        capsule.enabled = true;
+        circle.enabled = false;
+        //give harpoon a bouncy material along with less friction 
+        rb.sharedMaterial = new PhysicsMaterial2D("HARPOON MATERIAL");
+        rb.sharedMaterial.bounciness = 10;
+        rb.sharedMaterial.friction = -1;
 
-            //give harpoon drag to further simulate water and less velocity and force
-            rb.drag = 2;
-            rb.angularDrag = 1;
+        //give harpoon drag to further simulate water and less velocity and force
+        rb.drag = 2;
+        rb.angularDrag = 1;
     }
 }

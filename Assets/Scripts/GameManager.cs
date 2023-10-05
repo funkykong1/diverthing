@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     {
         //no need for publics cluttering gamemanager
         gameScreen = GameObject.Find("Ingame Canvas");
-        guide = GameObject.Find("Guide Canvas");
         titleScreen = GameObject.Find("Menu Canvas");
         gameOverScreen = GameObject.Find("Game Over Canvas");
         gameOverScreen.gameObject.SetActive(false);
