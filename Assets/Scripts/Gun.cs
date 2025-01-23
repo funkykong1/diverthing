@@ -177,7 +177,7 @@ public class Gun : MonoBehaviour
         rb.drag = currDistance * 1.2f;
 
         //apply multipliers for smoother use
-        var dir3 = new Vector2(dir2.x*1.2f, dir2.y/1.5f);
+        var dir3 = new Vector2(dir2.x*1.5f, dir2.y/1.5f);
 
         //add force towards harpoon
         rb.AddForce(dir3 * speed, ForceMode2D.Force);

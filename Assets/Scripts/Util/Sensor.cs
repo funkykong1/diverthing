@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Sensor : MonoBehaviour
 {
-    private CircleCollider2D forward;
-    private BoxCollider2D down;
     private Crawler parent;
+
+    public int enemies = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        forward = this.GetComponent<CircleCollider2D>();
-        down = this.GetComponent<BoxCollider2D>();
         parent = GetComponentInParent<Crawler>();
     }
 
@@ -24,11 +22,24 @@ public class Sensor : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Ground"))
-            StartCoroutine(parent.RotateUp());
+        if(other.CompareTag("Enemy"))
+        {
+            enemies += 1;
+            StartCoroutine(parent.Hide());
+        }   
     }
 
-    // void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.CompareTag("Enemy") && enemies > 0)
+            enemies -= 1;
+
+        if(other.CompareTag("Ground"))
+            parent.Flip();
+    }
+
+
+    //void OnTriggerExit2D(Collider2D other)
     // {
     //     if(other.CompareTag("Ground"))
     //         parent.RotateDown();

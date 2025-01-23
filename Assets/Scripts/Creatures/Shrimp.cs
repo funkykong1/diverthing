@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using Unity.VisualScripting;
 
 public class Shrimp : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Shrimp : MonoBehaviour
     private AIPath aiPath;
 
     private CircleCollider2D circle;
+    private BoxCollider2D box;
     private SpriteRenderer rend;
     public Sprite[] sprites;
 
@@ -30,6 +32,7 @@ public class Shrimp : MonoBehaviour
         //initialize stuff
         rend = GetComponent<SpriteRenderer>();
         circle = GetComponent<CircleCollider2D>();
+        box = GetComponent<BoxCollider2D>();
         aiPath = GetComponent<AIPath>();
 
         runTimer = 0;
@@ -68,6 +71,14 @@ public class Shrimp : MonoBehaviour
         }
         
     }
+
+    //if shrimp notices another creature it will run
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Enemy" || other.gameObject.CompareTag("Player"))
+            RunRefresh();
+    }
+
     void LateUpdate()
     {
         if(runTimer > 0)
