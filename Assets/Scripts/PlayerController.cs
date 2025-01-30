@@ -11,18 +11,26 @@ public class PlayerController : MonoBehaviour
 
     float horizontalMove = 0f;
     bool jump = false;
+    
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         controller = GetComponent<PlayerMovement>();
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+        if(horizontalMove != 0)
+            anim.speed = 1;
+        else
+            anim.speed = 0;
+
 
         if(Input.GetButtonDown("Jump"))
         {

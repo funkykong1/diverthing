@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8300810280015480429}
   - component: {fileID: 85669609707351419}
   - component: {fileID: 85669609586579947}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: seg7
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 1284820528867054432}
   - component: {fileID: 1543715361564379347}
   - component: {fileID: 85669608477525132}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Snake
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -244,8 +244,9 @@ MonoBehaviour:
   sprites:
   - {fileID: -990138281, guid: 4c66ee11ee97cab43babee265f22abd2, type: 3}
   - {fileID: 1485997283, guid: 4c66ee11ee97cab43babee265f22abd2, type: 3}
-  range: 0
+  range: 10
   idleTimer: 0
+  idleCoroutineWaiting: 0
   distance: 0
   detectRange: 0
   chaseTimer: 0
@@ -329,9 +330,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 5
   radius: 0.5
-  height: 0.01
+  height: 0.5
   canMove: 1
-  maxSpeed: 4
+  maxSpeed: 2
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -344,15 +345,15 @@ MonoBehaviour:
   autoRepath:
     mode: 2
     interval: 0.5
-    sensitivity: 12.54
+    sensitivity: 2.36
     maximumInterval: 0.5
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
-  rotationSpeed: 180
-  slowdownDistance: 0
-  pickNextWaypointDist: 1
-  endReachedDistance: 1
+  rotationSpeed: 220
+  slowdownDistance: 1.1
+  pickNextWaypointDist: 0.5
+  endReachedDistance: 1.5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -374,7 +375,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -421,7 +422,7 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
-    value: -2
+    value: 2
 --- !u!1 &1543715361039089707
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +438,7 @@ GameObject:
   - component: {fileID: 8702343873570969353}
   - component: {fileID: 85669609329530022}
   - component: {fileID: 85669608929894731}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: seg2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -528,7 +529,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -618,7 +619,7 @@ GameObject:
   - component: {fileID: 5754136659570853232}
   - component: {fileID: 85669608380227282}
   - component: {fileID: 85669608338011899}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: seg3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -709,7 +710,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -799,7 +800,7 @@ GameObject:
   - component: {fileID: 7810914793230669856}
   - component: {fileID: 85669609681797738}
   - component: {fileID: 85669610195529662}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: seg1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -890,7 +891,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -980,7 +981,7 @@ GameObject:
   - component: {fileID: 8005422560629535737}
   - component: {fileID: 85669609088470096}
   - component: {fileID: 85669608513024826}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: tail
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1071,7 +1072,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -1161,7 +1162,7 @@ GameObject:
   - component: {fileID: 8498969342277754665}
   - component: {fileID: 85669609770968624}
   - component: {fileID: 85669608617965277}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: seg8
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1252,7 +1253,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -1342,7 +1343,7 @@ GameObject:
   - component: {fileID: 6015755657696535029}
   - component: {fileID: 85669609011381265}
   - component: {fileID: 85669608616138805}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: seg6
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1433,7 +1434,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -1523,7 +1524,7 @@ GameObject:
   - component: {fileID: 7071246845399251649}
   - component: {fileID: 85669609093500150}
   - component: {fileID: 85669609565570333}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: seg4
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1614,7 +1615,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -1704,7 +1705,7 @@ GameObject:
   - component: {fileID: 7524541180390889277}
   - component: {fileID: 85669609988661581}
   - component: {fileID: 85669608898149986}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: seg5
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1795,7 +1796,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -1885,7 +1886,7 @@ GameObject:
   - component: {fileID: 4920335610607595664}
   - component: {fileID: 85669609499150957}
   - component: {fileID: 85669609944695038}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: seg9
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1976,7 +1977,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0

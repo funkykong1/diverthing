@@ -96,7 +96,7 @@ public class Gun : MonoBehaviour
                 rend.sprite = sprites[2];
                 
 
-            if(currDistance > 15)
+            if(currDistance > 12)
                 forceReturn = true;
 
             if(forceReturn)
@@ -204,7 +204,7 @@ public class Gun : MonoBehaviour
             reelSpeed = 6;
         else
             //harpoon is far away, reduce speed, dir2 will be huge at this point anyway
-            reelSpeed = 5;
+            reelSpeed = 4;
             
         //add force into harpoon 
         rbh.AddForce((Vector2)dir2*reelSpeed, ForceMode2D.Force);

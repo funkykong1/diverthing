@@ -14,7 +14,6 @@ public class Shrimp : MonoBehaviour
     private AIPath aiPath;
 
     private CircleCollider2D circle;
-    private BoxCollider2D box;
     private SpriteRenderer rend;
     public Sprite[] sprites;
 
@@ -22,21 +21,16 @@ public class Shrimp : MonoBehaviour
     private float range, idleTimer;
 
     //Solely so update doesnt start 9000 coroutines
+    [SerializeField]
     private bool idleCoroutineWaiting, isRunning;
 
-    public float distance, detectRange;
-    public float runTimer;
     void Awake()
     {
 
         //initialize stuff
         rend = GetComponent<SpriteRenderer>();
         circle = GetComponent<CircleCollider2D>();
-        box = GetComponent<BoxCollider2D>();
         aiPath = GetComponent<AIPath>();
-
-        runTimer = 0;
-        detectRange = 2;
     }
 
     void Start()
@@ -51,18 +45,10 @@ public class Shrimp : MonoBehaviour
             transform.localScale = new Vector3(1f, 1f, 1f);
         else if(aiPath.desiredVelocity.x <= -0.01f)
             transform.localScale = new Vector3(-1f, 1f, 1f);
-
-        //update distance between shrimp and plr
-        distance = Vector2.Distance(this.transform.position, GameObject.Find("Player").transform.position);
         
 
-        if(distance <= detectRange)
-            RunRefresh();
-        
-
-        if(!aiPath.hasPath && isRunning)
-            PathDone();
-
+        if(aiPath.reachedDestination && isRunning)
+            StartCoroutine(PathDone());
 
         if (!idleCoroutineWaiting && !isRunning)
         {
@@ -75,27 +61,24 @@ public class Shrimp : MonoBehaviour
     //if shrimp notices another creature it will run
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Enemy" || other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Player"))
+        {
             RunRefresh();
-    }
-
-    void LateUpdate()
-    {
-        if(runTimer > 0)
-            runTimer -= 1 * Time.deltaTime;
+        }
+        //harpoons also scare off the shrimp
+        else if(other.gameObject.CompareTag("Harpoon") && !isRunning)
+            RunRefresh();
     }
 
 
     void RunRefresh()
     {
         
-        if(idleCoroutineWaiting)
-            StopCoroutine(Idle());
-
+        StopCoroutine(Idle());
+        idleCoroutineWaiting = false;
         //this makes the shrimp go for a rando spot
         //Can sometimes be dumb and go like 2 foot. Its a shrimp though
-        if(!isRunning)
-            GetRandomSpot(range*3);
+        GetRandomSpot(range*3);
 
         //bool for only one path and for other stuff
         isRunning = true;
@@ -104,21 +87,20 @@ public class Shrimp : MonoBehaviour
         rend.sprite = sprites[1];
 
         //shrimp is alert and goes faster and sees further
-        detectRange = 3;
-        aiPath.maxSpeed = 4.5f;
+        circle.radius = 3;
+        aiPath.maxSpeed = 5.5f;
 
     }
 
     //when a fleeing AiPath is completed
-    void PathDone()
+    IEnumerator PathDone()
     {
-        Debug.Log("PATH COMPLETE");
-        //shrimp checks for player again if running with slightly greater range
-        if(distance <= detectRange * 1.5 && isRunning)
-            RunRefresh();
-        else
         //calms down if player isnt near anymore
-        isRunning = false;
+        yield return new WaitForSeconds(4);
+        if(aiPath.reachedDestination)
+            isRunning = false;
+        else
+            yield break;
     }
 
     public IEnumerator Idle()
@@ -129,10 +111,12 @@ public class Shrimp : MonoBehaviour
 
         //Shrimp randomly chooses spots to idle around, moves slower
         idleTimer = Random.Range(2f, 6f);
-        aiPath.maxSpeed = 3f;
+        aiPath.maxSpeed = 1.75f;
+        circle.radius = 2;
 
         GetRandomSpot(range);
 
+        yield return new WaitUntil(() => aiPath.reachedDestination);
         yield return new WaitForSeconds(idleTimer);
 
         //Shrimp range is smaller during its downtime. Something like its eating moss idk

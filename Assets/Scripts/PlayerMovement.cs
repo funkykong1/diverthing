@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
 	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.	
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
-	[SerializeField] private bool m_AirControl = true;							// Whether or not a player can steer while jumping;
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 
@@ -62,10 +61,6 @@ public class PlayerMovement : MonoBehaviour
 	public void Move(float move, bool jump)
 	{
 
-		//only control the player if grounded or airControl is turned on
-		if (m_Grounded || m_AirControl)
-		{
-
 			// Move the character by finding the target velocity
 			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
 			// And then smoothing it out and applying it to the character
@@ -83,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
 				// ... flip the player.
 				Flip();
 			}
-		}
+		
 		// If the player should jump...
 		if (m_Grounded && jump)
 		{

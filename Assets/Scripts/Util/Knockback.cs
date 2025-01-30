@@ -31,10 +31,6 @@ public class Knockback : MonoBehaviour
 
     public void PlayFeedback(GameObject sender)
     {
-        if(sender.tag != "Enemy")
-            return;
-
-        
         StopAllCoroutines();
         onBegin?.Invoke();
         

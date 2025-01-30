@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 2906916709146971174}
   - component: {fileID: 2767818899648607167}
   - component: {fileID: 8399182830880594408}
-  - component: {fileID: 4626293971237950131}
   - component: {fileID: 528030883176732723}
   - component: {fileID: -5938339179940892116}
   - component: {fileID: 8414692612456177649}
-  m_Layer: 7
+  - component: {fileID: -4549925789421320241}
+  m_Layer: 11
   m_Name: Shrimp
   m_TagString: Treasure
   m_Icon: {fileID: 0}
@@ -57,9 +57,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 25464d7fda27ace4985c3ecd51e914ae, type: 3}
   range: 10
   idleTimer: 0
-  distance: 0
-  detectRange: 2
-  runTimer: 0
+  idleCoroutineWaiting: 0
+  isRunning: 0
 --- !u!114 &5398498012884921153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.3
-  height: 0.01
+  radius: 0.35
+  height: 0.3
   canMove: 1
   maxSpeed: 5
   gravity: {x: NaN, y: NaN, z: NaN}
@@ -196,22 +195,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4626293971237950131
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8399182830880594414}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.15
 --- !u!50 &528030883176732723
 Rigidbody2D:
   serializedVersion: 4
@@ -220,13 +203,13 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8399182830880594414}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.01
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.05
+  m_Mass: 0.09
+  m_LinearDrag: 0.14
+  m_AngularDrag: 0.09
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
@@ -264,3 +247,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
+--- !u!70 &-4549925789421320241
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399182830880594414}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.05163093, y: -0.006881386}
+  m_Size: {x: 0.298389, y: 0.33800787}
+  m_Direction: 0

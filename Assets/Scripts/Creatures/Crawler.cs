@@ -12,7 +12,7 @@ public class Crawler : MonoBehaviour
     public Sprite[] slugs;
     public Sprite[] shells;
     bool facingRight = true;
-    private float timer, flipTimer;
+    public float timer, flipTimer, scaredTimer;
 
 
 
@@ -56,6 +56,8 @@ public class Crawler : MonoBehaviour
                 transform.Translate(Vector3.left * Time.fixedDeltaTime * 0.3f, Space.Self);
             }
         }
+        else if(scaredTimer > 0)
+            scaredTimer--;
         
         //RaycastHit2D[] forward = Physics2D.RaycastAll(transform.position, Vector2.right/4);
 
@@ -139,7 +141,7 @@ public class Crawler : MonoBehaviour
     //snail is struck by harpoon, reduce hp and make it cower in fear
     internal IEnumerator Struck()
     {
-        
+        scaredTimer = 600;
         hp--;
         rend.sprite = slugs[2];
 
@@ -152,7 +154,7 @@ public class Crawler : MonoBehaviour
         }
             
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitUntil(() => scaredTimer <= 0);
         rend.sprite = slugs[0];
     }
 
@@ -162,22 +164,9 @@ public class Crawler : MonoBehaviour
         if(rend.sprite == slugs[2])
             yield break;
 
-        Sensor sensor = GetComponentInChildren<Sensor>();
         rend.sprite = slugs[2];
 
-        while(true)
-        {
-            //check for enemies every 3 seconds
-            if(sensor.enemies > 0)
-            {
-                yield return new WaitForSeconds(3);
-            }
-            else
-            {
-               break;
-            }
-        }
-        //yield return new WaitUntil(() => sensor.enemies < 1);
+        yield return new WaitUntil(() => scaredTimer <= 0);
         rend.sprite = slugs[0];
         
     }

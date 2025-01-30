@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         //guide.SetActive(false);
         player.SetActive(false);
         gameScreen.SetActive(false);
+        GameObject.Find("Win Canvas").SetActive(false);
+        Physics2D.IgnoreLayerCollision(11, 11, true);
     }
 
 

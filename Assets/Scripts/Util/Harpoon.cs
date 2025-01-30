@@ -20,6 +20,7 @@ public class Harpoon : MonoBehaviour
         circle = GetComponent<CircleCollider2D>();
         capsule = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        Physics2D.IgnoreLayerCollision(7, 10, true);
 
         circle.enabled = true;
         capsule.enabled = false;
@@ -33,7 +34,7 @@ public class Harpoon : MonoBehaviour
         //timer and add force to the thing
         timer = 0.5f;
         rb.AddForce(gun.transform.right * gun.force, ForceMode2D.Impulse);
-        Physics2D.IgnoreLayerCollision(3,3, true);
+        Physics2D.IgnoreLayerCollision(3,10, true);
     }
 
     void Update()

@@ -21,11 +21,11 @@ public class Drill : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player") && uiManager.score == uiManager.goal)
+        if(other.CompareTag("Player") && uiManager.score >= uiManager.goal)
         {
             //TODO gamemanager win
             Debug.Log("Voitit pelin :D");
-            gameManager.RestartGame();
+            GameObject.Find("Win Canvas").SetActive(true);
         }
     }
 }

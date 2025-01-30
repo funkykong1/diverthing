@@ -6,8 +6,6 @@ public class Sensor : MonoBehaviour
 {
     private Crawler parent;
 
-    public int enemies = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +22,13 @@ public class Sensor : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            enemies += 1;
+            parent.scaredTimer = 200;
             StartCoroutine(parent.Hide());
         }   
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.CompareTag("Enemy") && enemies > 0)
-            enemies -= 1;
 
         if(other.CompareTag("Ground"))
             parent.Flip();

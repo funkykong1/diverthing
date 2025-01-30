@@ -91,7 +91,7 @@ public class Fish : MonoBehaviour
 
         //manually change target and speed
         setter.target = GameObject.Find("Player").transform;
-        aiPath.maxSpeed = 3;
+        aiPath.maxSpeed = 4.5f;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
