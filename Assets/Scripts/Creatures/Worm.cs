@@ -111,7 +111,7 @@ public class Worm : MonoBehaviour
 
         //manually change target and speed
         setter.target = GameObject.Find("Player").transform;
-        aiPath.maxSpeed = 4;
+        aiPath.maxSpeed = 4.3f;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

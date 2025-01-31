@@ -244,7 +244,7 @@ MonoBehaviour:
   sprites:
   - {fileID: -990138281, guid: 4c66ee11ee97cab43babee265f22abd2, type: 3}
   - {fileID: 1485997283, guid: 4c66ee11ee97cab43babee265f22abd2, type: 3}
-  range: 10
+  range: 25
   idleTimer: 0
   idleCoroutineWaiting: 0
   distance: 0
@@ -351,9 +351,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 220
-  slowdownDistance: 1.1
+  slowdownDistance: 0.3
   pickNextWaypointDist: 0.5
-  endReachedDistance: 1.5
+  endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
