@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
 
     //current treasure prefab in play
-    private GameObject currentSet, currentEnemies, titleScreen, gameOverScreen, guide, gameScreen;
+    [HideInInspector]
+    public GameObject currentSet, currentEnemies, titleScreen, gameOverScreen, guide, gameScreen, winScreen;
 
     public GameObject player;
 
@@ -37,11 +38,12 @@ public class GameManager : MonoBehaviour
         gameScreen = GameObject.Find("Ingame Canvas");
         titleScreen = GameObject.Find("Menu Canvas");
         gameOverScreen = GameObject.Find("Game Over Canvas");
+        winScreen = GameObject.Find("Win Canvas");
         gameOverScreen.gameObject.SetActive(false);
         //guide.SetActive(false);
         player.SetActive(false);
         gameScreen.SetActive(false);
-        GameObject.Find("Win Canvas").SetActive(false);
+        winScreen.SetActive(false);
         Physics2D.IgnoreLayerCollision(11, 11, true);
     }
 

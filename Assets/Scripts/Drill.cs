@@ -25,7 +25,7 @@ public class Drill : MonoBehaviour
         {
             //TODO gamemanager win
             Debug.Log("Voitit pelin :D");
-            GameObject.Find("Win Canvas").SetActive(true);
+            gameManager.winScreen.SetActive(true);
         }
     }
 }

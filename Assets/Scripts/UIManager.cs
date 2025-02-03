@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
         
         instance.goalUI.sprite = instance.scoreSprites[goal];
 
-        leaveText.gameObject.SetActive(false);
+        leaveText.SetActive(false);
     }
 
     public static void UpdateLives (int l)
@@ -53,6 +53,8 @@ public class UIManager : MonoBehaviour
 
     public static void UpdateScore (int s)
     {
+        if(instance.score >= 9)
+            return;
         //update scoretext
         instance.score += s;
         if(instance.scoreSprites[instance.score] != null)
